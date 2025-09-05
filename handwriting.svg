@@ -1,22 +1,20 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 150">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 100">
   <style>
     .cls-1 {
       fill: none;
       stroke: #2c3e50;
-      stroke-width: 5px;
-      stroke-miterlimit: 10;
+      stroke-width: 3px;
+      stroke-linecap: round;
+      stroke-linejoin: round;
       stroke-dasharray: 1000;
       stroke-dashoffset: 1000;
-      animation: write-animation 5s forwards;
+      animation: write-text 4s ease-in-out forwards;
     }
-    @keyframes write-animation {
-      from {
-        stroke-dashoffset: 1000;
-      }
+    @keyframes write-text {
       to {
         stroke-dashoffset: 0;
       }
     }
   </style>
-  <path id="text-path" class="cls-1" d="M10,100 Q50,50 100,100 T200,100 T300,100 T400,100 T500,100 T600,100 T700,100 T800,100 T900,100"/>
+  <path class="cls-1" d="M 20,60 C 30,40 50,40 60,60 S 80,80 90,60 M 110,60 C 120,40 140,40 150,60 M 170,60 C 180,40 200,40 210,60 M 230,60 C 240,40 260,40 270,60 M 290,60 C 300,40 320,40 330,60 M 350,60 C 360,40 380,40 390,60 M 410,60 C 420,40 440,40 450,60"/>
 </svg>
