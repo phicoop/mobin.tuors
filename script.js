@@ -167,7 +167,8 @@ document.addEventListener('DOMContentLoaded', () => {
         { keywords: ["termin", "buchen", "verfügbarkeit", "zeit", "wann", "appointment", "book", "availability", "time", "when"], response: "Termine sind grundsätzlich von Montag bis und mit Sonntag von 08:30 bis 22:00 Uhr zu buchen.", response_en: "Appointments can be booked from Monday to Sunday from 08:30 to 22:00." },
         { keywords: ["danke", "dankeschön", "super", "thanks", "thank you", "great"], response: "Gern geschehen! Ich helfe dir gerne weiter.", response_en: "You're welcome! I am happy to help you." },
         { keywords: ["kontakt", "email", "telefon", "contact", "phone"], response: "Du findest meine Kontaktinformationen direkt hier auf der Seite.", response_en: "You can find my contact information directly here on the page." },
-        { keywords: ["Who","more"], response:" I completed my Bachelor in Urmia with an average of 85% in all courses and was considered the top student in the faculty of mathematics and had hence been administred to participate in matholypiads as the main representie of the faculty. I am grateful for this experiance and am more than happy to share my knowledge and mindset i consequentially gained troughout the years with you. I was working as a teaching assistent in varius mathclasses and started providing online teaching cupple of months ago, tutoring ETH and Phd students since then. I intend to become a mathprofessor, so teaching is more than just a means to an end. I'm passionante about math and am keep exploring new topics in my free time. "}
+        { keywords: ["Who","more", "Wer", "Mobin", "mobin"], response_en:" I completed my Bachelor in Urmia with an average of 85% in all courses and was considered the top student in the faculty of mathematics and had hence been administred to participate in matholypiads as the main representie of the faculty. I am grateful for this experiance and am more than happy to share my knowledge and mindset i consequentially gained troughout the years with you. I was working as a teaching assistent in varius mathclasses and started providing online teaching cupple of months ago, tutoring ETH and Phd students since then. I intend to become a mathprofessor, so teaching is more than just a means to an end. I'm passionante about math and am keep exploring new topics in my free time. "},
+        { keywords: ["styl", "arbeitsweise", "Arbeitsweise"], response: "Der Unterricht via Zoom findet mittels des Whitebords, dass in Zoom integriert ist, statt. Am günstigsten ist es dabei wenn du einen Grafikpen oder ein Tablet hast um interaktiv auf dem Whiteboard Übungen in echtzeit vor zu lösen. Wenn du das allerdings nicht hast ist das kein Porblem. Wenn du aus irgendwelchen Gründen Zoom (grundsätzlich gratis und kann auch als Webversion verwendbar) finden wir auch da sicher eine Lösung. ", response_en: "The lessons are conducted via Zoom using the integrated whiteboard feature. It's most convenient if you have a graphics pen or a tablet to interactively solve exercises on the whiteboard in real time. However, if you don't have these, it's not a problem. If for any reason you can't use Zoom (which is free and also available as a web version), we will certainly find a solution for that as well." },
     ];
 
     chatbotIcon.addEventListener('click', () => { chatbotWindow.classList.toggle('visible'); });
@@ -212,6 +213,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
+
 
 
 
