@@ -166,7 +166,8 @@ document.addEventListener('DOMContentLoaded', () => {
         { keywords: ["preis", "kosten", "was kostet", "kostet", "price", "cost","how much","how much?", "How much?","How much", "much?","wie viel"], response: "Eine Probelektion kostet 15 CHF, die nach Ablauf der Stunde vom Regulärpreis von 25CHF abgelöst wird.", response_en: "A trial lesson costs 15 CHF, which is replaced by the regular price of 25CHF after the hour." },
         { keywords: ["termin", "buchen", "verfügbarkeit", "zeit", "wann", "appointment", "book", "availability", "time", "when"], response: "Termine sind grundsätzlich von Montag bis und mit Sonntag von 08:30 bis 22:00 Uhr zu buchen.", response_en: "Appointments can be booked from Monday to Sunday from 08:30 to 22:00." },
         { keywords: ["danke", "dankeschön", "super", "thanks", "thank you", "great"], response: "Gern geschehen! Ich helfe dir gerne weiter.", response_en: "You're welcome! I am happy to help you." },
-        { keywords: ["kontakt", "email", "telefon", "contact", "phone"], response: "Du findest meine Kontaktinformationen direkt hier auf der Seite.", response_en: "You can find my contact information directly here on the page." }
+        { keywords: ["kontakt", "email", "telefon", "contact", "phone"], response: "Du findest meine Kontaktinformationen direkt hier auf der Seite.", response_en: "You can find my contact information directly here on the page." },
+        { keywords: ["Mobin","Who","more"], response:" Mobin has completed his Bachelor in Urmia with an average of 85% in all his courses.He was considered the top student in the faculty of mathematics and had hence been administred to participate in matholypiads as the main representie of his faculty. He was working as a teaching assistent in varius mathclasses and started providing online teaching cupple of months ago, tutoring ETH and Phd students since then. He intends to become a mathprofessor, so teaching is more than just a means to an end. He is passionante about math and is keep exploring new topics in his free time. "}
     ];
 
     chatbotIcon.addEventListener('click', () => { chatbotWindow.classList.toggle('visible'); });
@@ -211,5 +212,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
+
 
 
