@@ -1,22 +1,24 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 150">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 100">
   <style>
     .cls-1 {
       fill: none;
       stroke: #2c3e50;
-      stroke-width: 5px;
-      stroke-miterlimit: 10;
+      stroke-width: 3px;
+      stroke-linecap: round;
+      stroke-linejoin: round;
       stroke-dasharray: 1000;
       stroke-dashoffset: 1000;
-      animation: write-animation 5s forwards;
+      animation: write-animation 3s ease-in-out forwards;
     }
+
     @keyframes write-animation {
-      from {
-        stroke-dashoffset: 1000;
-      }
       to {
         stroke-dashoffset: 0;
       }
     }
   </style>
-  <path id="text-path" class="cls-1" d="M10,100 Q50,50 100,100 T200,100 T300,100 T400,100 T500,100 T600,100 T700,100 T800,100 T900,100"/>
+  <path id="text-path" class="cls-1" d="M 12.5 50.5 C 12.5 50.5 28.5 39 42.5 39 C 56.5 39 52 49 61.5 54.5 C 71 60 93.5 60.5 106 60.5 C 118.5 60.5 119 55.5 119 50 C 119 44.5 115 38.5 108.5 38.5 C 102 38.5 97.5 45.5 97.5 50.5 C 97.5 55.5 102 60.5 108.5 60.5 C 115 60.5 119 54.5 119 50"/>
+  <path class="cls-1" d="M 130 50.5 C 130 50.5 146 39 160 39 C 174 39 169.5 49 179 54.5 C 188.5 60 211 60.5 223.5 60.5 C 236 60.5 236.5 55.5 236.5 50 C 236.5 44.5 232.5 38.5 226 38.5 C 219.5 38.5 215 45.5 215 50.5 C 215 55.5 219.5 60.5 226 60.5 C 232.5 60.5 236.5 54.5 236.5 50"/>
+  <path class="cls-1" d="M 248.5 50.5 C 248.5 50.5 264.5 39 278.5 39 C 292.5 39 288 49 297.5 54.5 C 307 60 329.5 60.5 342 60.5 C 354.5 60.5 355 55.5 355 50 C 355 44.5 351 38.5 344.5 38.5 C 338 38.5 333.5 45.5 333.5 50.5 C 333.5 55.5 338 60.5 344.5 60.5 C 351 60.5 355 54.5 355 50"/>
+  <path class="cls-1" d="M 367.5 50.5 C 367.5 50.5 383.5 39 397.5 39 C 411.5 39 407 49 416.5 54.5 C 426 60 448.5 60.5 461 60.5 C 473.5 60.5 474 55.5 474 50 C 474 44.5 470 38.5 463.5 38.5 C 457 38.5 452.5 45.5 452.5 50.5 C 452.5 55.5 457 60.5 463.5 60.5 C 470 60.5 474 54.5 474 50"/>
 </svg>
