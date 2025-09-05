@@ -107,6 +107,10 @@ const chatbotResponses = [
         keywords: ["kontakt", "email", "telefon"],
         response: "Du findest meine Kontaktinformationen direkt hier auf der Seite."
     }
+    {
+        keywords: ["price","price?","Price?","coast", "cost","costs", "how much","How much","how much?", "How much?"],
+        response: "Eine Probelektion kostet 15 CHF, die nach Ablauf der Stunde vom Regulärpreis von 25CHF abgelöst wird."
+    },
 ];
 
 // Nachricht senden
@@ -152,4 +156,5 @@ userInput.addEventListener('keydown', (event) => {
     if (event.key === 'Enter') {
         sendMessage();
     }
+
 });
