@@ -13,8 +13,8 @@ document.addEventListener('DOMContentLoaded', () => {
             cta_home: "Jetzt buchen!",
             about_title: "Über mich",
             about_name: "Hallo, ich bin Mobin",
-            about_text1: "Ich bin ein leidenschaftlicher Nachhilfelehrer mit [ANZAHL] Jahren Erfahrung in der Vermittlung von [FÄCHER]. Mein Ziel ist es, nicht nur Wissen zu vermitteln, sondern auch das Selbstvertrauen meiner Schüler zu stärken. Ich glaube daran, dass jeder lernen kann, wenn er die richtige Unterstützung erhält.",
-            about_text2: "In meinen Stunden konzentriere ich mich auf individuelle Bedürfnisse und erstelle maßgeschneiderte Lernpläne. Gemeinsam überwinden wir Schwierigkeiten und machen das Lernen zu einem positiven Erlebnis. Ob Mathe, Physik oder ein anderes Fach – ich helfe dir dabei, deine Ziele zu erreichen.",
+            about_text1: "Ich bin ein leidenschaftlicher Nachhilfelehrer mit 2 Jahren Erfahrung in der Vermittlung von Themeninhalten verschiedener Mathematikfähern. Mein Ziel ist es, nicht nur Wissen zu vermitteln, sondern auch das Selbstvertrauen meiner Schüler zu stärken. Ich glaube daran, dass jeder lernen kann, wenn er die richtige Unterstützung erhält.",
+            about_text2: "In meinen Stunden konzentriere ich mich auf individuelle Bedürfnisse und erstelle maßgeschneiderte Lernpläne. Gemeinsam überwinden wir Schwierigkeiten und machen das Lernen zu einem positiven Erlebnis. Ob Algebra, Calculus, diskrete Mathe oder ein anderes Mathematikfach – ich helfe dir dabei, deine Ziele zu erreichen.",
             about_text3: "Der Unterricht findet über Zoom und auf englisch statt und kann von MO-SO von 08:30 bis 22:00 Uhr gebucht werden.",
             contact_title: "Kontakt & Buchen",
             contact_subtitle: "Bereit für den nächsten Schritt? Nimm Kontakt auf oder buche direkt eine Probestunde.",
@@ -213,6 +213,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
+
 
 
 
