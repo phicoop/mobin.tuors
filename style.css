@@ -521,7 +521,7 @@ footer {
 /* Styling für die Handschrift-Animation */
 .writing-animation-container {
     width: 100%;
-    max-width: 600px;
+    max-width: 600px; /* Breite der Animation anpassen */
     margin: auto;
     display: flex;
     justify-content: center;
@@ -533,4 +533,3 @@ footer {
     height: auto;
     display: block;
 }
-
