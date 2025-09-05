@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Mobintutors - Dein Nachhilfelehrer</title>
+    <title data-key="title">Mobintutors - Dein Nachhilfelehrer</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -12,11 +12,18 @@
 
     <header>
         <nav>
-            <a href="#" class="logo">Mobin.tutors!</a>
+            <a href="#" class="logo" data-key="logo">Mobin.tutors!</a>
             <div class="nav-links">
-                <a href="#about">Über mich</a>
-                <a href="#contact">Kontakt & Buchen</a>
-                <a href="#imprint">Impressum</a>
+                <a href="#about" data-key="nav_about">Über mich</a>
+                <a href="#contact" data-key="nav_contact">Kontakt & Buchen</a>
+                <a href="#imprint" data-key="nav_imprint">Impressum</a>
+                <div class="language-switcher-container">
+                    <select id="language-switcher">
+                       <option value="de">DE</option>
+                       <option value="en">EN</option>
+                    </select>
+                    <i class="fas fa-globe"></i>
+                </div>
             </div>
         </nav>
     </header>
@@ -24,9 +31,9 @@
     <main>
         <section id="home" class="hero">
             <div class="hero-content">
-                <h1>Lernen leicht gemacht.</h1>
-                <p>Professionelle Nachhilfe, die dich wirklich weiterbringt.</p>
-                <a href="#contact" class="cta-button">Jetzt buchen!</a>
+                <h1 data-key="hero_title">Lernen leicht gemacht.</h1>
+                <p data-key="hero_subtitle">Professionelle Nachhilfe, die dich wirklich weiterbringt.</p>
+                <a href="#contact" class="cta-button" data-key="cta_home">Jetzt buchen!</a>
             </div>
             <div class="hero-image">
                 <img src="https://via.placeholder.com/600x400" alt="Nachhilfelehrer-Bild">
@@ -35,12 +42,13 @@
 
         <section id="about" class="page-section">
             <div class="container">
-                <h2>Über mich</h2>
+                <h2 data-key="about_title">Über mich</h2>
                 <div class="about-content">
                     <div class="about-text">
-                        <h3>Hallo, ich bin Mobin</h3>
-                        <p>Ich bin ein leidenschaftlicher Nachhilfelehrer mit [ANZAHL] Jahren Erfahrung in der Vermittlung von [FÄCHER]. Mein Ziel ist es, nicht nur Wissen zu vermitteln, sondern auch das Selbstvertrauen meiner Schüler zu stärken. Ich glaube daran, dass jeder lernen kann, wenn er die richtige Unterstützung erhält.</p>
-                        <p>In meinen Stunden konzentriere ich mich auf individuelle Bedürfnisse und erstelle maßgeschneiderte Lernpläne. Gemeinsam überwinden wir Schwierigkeiten und machen das Lernen zu einem positiven Erlebnis. Ob Mathe, Physik oder ein anderes Fach – ich helfe dir dabei, deine Ziele zu erreichen.</p>
+                        <h3 data-key="about_name">Hallo, ich bin Mobin</h3>
+                        <p data-key="about_text1">Ich bin ein leidenschaftlicher Nachhilfelehrer mit 2 Jahren Erfahrung in der Vermittlung von verschiedenen Mathematikfächern als Teachingassistent. Mein Ziel ist es, nicht nur Wissen zu vermitteln, sondern auch das Selbstvertrauen meiner Schüler zu stärken. Ich glaube daran, dass jeder lernen kann, wenn er die richtige Unterstützung erhält.</p>
+                        <p data-key="about_text2">In meinen Stunden konzentriere ich mich auf individuelle Bedürfnisse und erstelle maßgeschneiderte Lernpläne. Gemeinsam überwinden wir Schwierigkeiten und machen das Lernen zu einem positiven Erlebnis. Ob Mathe, Physik oder ein anderes Fach – ich helfe dir dabei, deine Ziele zu erreichen.</p>
+                        <p data-key="about_text3">Hier kommt dein neuer Text rein, den du auf Deutsch verfassen kannst.</p>
                     </div>
                     <div class="about-image">
                         <img src="https://via.placeholder.com/400x400" alt="Ein Bild von dir">
@@ -51,24 +59,24 @@
 
         <section id="contact" class="page-section contact-section">
             <div class="container">
-                <h2>Kontakt & Buchen</h2>
-                <p>Bereit für den nächsten Schritt? Nimm Kontakt auf oder buche direkt eine Probestunde.</p>
+                <h2 data-key="contact_title">Kontakt & Buchen</h2>
+                <p data-key="contact_subtitle">Bereit für den nächsten Schritt? Nimm Kontakt auf oder buche direkt eine Probestunde.</p>
                 <div class="contact-grid">
                     <div class="contact-info">
-                        <h3>Kontaktinformationen</h3>
+                        <h3 data-key="contact_info_title">Kontaktinformationen</h3>
                         <p><i class="fas fa-phone-alt icon"></i> <span id="phone-number" class="clickable-phone-number">+989353821319</span></p>
-                        <p><i class="fab fa-whatsapp icon"></i> <a href="https://wa.link/70p27b" target="_blank">WhatsApp Nachricht senden</a></p>
+                        <p><i class="fab fa-whatsapp icon"></i> <a href="https://wa.link/70p27b" target="_blank" data-key="contact_info_link">WhatsApp Nachricht senden</a></p>
                         <p><i class="fas fa-envelope icon"></i> <a href="mailto:mobin.tutors@gmail.com">mobin.tutors@gmail.com</a></p>
                         <p><i class="fas fa-map-marker-alt icon"></i> Zoom</p>
-                        <a href="mailto:mobin.tutors@gmail.com" class="cta-button">Probestunde anfragen</a>
+                        <a href="mailto:mobin.tutors@gmail.com" class="cta-button" data-key="cta_contact">Probestunde anfragen</a>
                     </div>
                     <div class="contact-form-container">
-                        <h3>Direkt eine Nachricht senden</h3>
+                        <h3 data-key="contact_form_title">Direkt eine Nachricht senden</h3>
                         <form action="#" method="post" class="contact-form">
-                            <input type="text" name="name" placeholder="Dein Name" required>
-                            <input type="email" name="email" placeholder="Deine E-Mail-Adresse" required>
-                            <textarea name="message" rows="5" placeholder="Deine Nachricht" required></textarea>
-                            <button type="submit" class="cta-button">Senden</button>
+                            <input type="text" name="name" data-key="form_name_placeholder" placeholder="Dein Name" required>
+                            <input type="email" name="email" data-key="form_email_placeholder" placeholder="Deine E-Mail-Adresse" required>
+                            <textarea name="message" rows="5" data-key="form_message_placeholder" placeholder="Deine Nachricht" required></textarea>
+                            <button type="submit" class="cta-button" data-key="form_send_button">Senden</button>
                         </form>
                     </div>
                 </div>
@@ -77,9 +85,9 @@
 
         <section id="imprint" class="page-section imprint-section">
             <div class="container">
-                <h2>Impressum</h2>
+                <h2 data-key="imprint_title">Impressum</h2>
                 <div class="imprint-content">
-                    <p>
+                    <p data-key="imprint_content1">
                         [Mobin]<br>
                         [Peter-debye-weg]<br>
                         [8045 Zürich]<br><br>
@@ -87,7 +95,7 @@
                         Telefon: [0778146402]<br>
                         E-Mail: [mobin.tutors@gmail.com]
                     </p>
-                    <p>
+                    <p data-key="imprint_content2">
                         <strong>Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV:</strong><br>
                         [Mobin]<br>
                         [Peter-debye-weg]
@@ -95,28 +103,29 @@
                 </div>
             </div>
         </section>
+        
         <div id="chatbot-container">
-    <div id="chatbot-icon">
-        <i class="fas fa-robot"></i>
-    </div>
-    <div id="chatbot-window">
-        <div id="chatbot-header">
-            <h3>Fragen an den Nachhilfe-Bot</h3>
-            <span id="close-btn">&times;</span>
+            <div id="chatbot-icon">
+                <i class="fas fa-robot"></i>
+            </div>
+            <div id="chatbot-window">
+                <div id="chatbot-header">
+                    <h3 data-key="chatbot_title">Fragen an den Nachhilfe-Bot</h3>
+                    <span id="close-btn">&times;</span>
+                </div>
+                <div id="chatbot-messages">
+                    <div class="message bot-message" data-key="chatbot_intro">Hast du fragen über den Unterricht, Kosten, zeitliche Verfügbarkeit oder ähnliches? Dann frag mich gerne!</div>
+                </div>
+                <div id="chatbot-input">
+                    <input type="text" id="user-input" data-key="chatbot_placeholder" placeholder="Nachricht eingeben...">
+                    <button id="send-btn"><i class="fas fa-paper-plane"></i></button>
+                </div>
+            </div>
         </div>
-        <div id="chatbot-messages">
-            <div class="message bot-message"> Hast du fragen über den Unterricht, Kosten, zeitliche Verfügbarkeit oder änhnliches? Dann frag mich gerne!</div>
-        </div>
-        <div id="chatbot-input">
-            <input type="text" id="user-input" placeholder="Nachricht eingeben...">
-            <button id="send-btn"><i class="fas fa-paper-plane"></i></button>
-        </div>
-    </div>
-</div>
     </main>
 
     <footer>
-        <p>&copy; 2024 [Mobintutors]. Alle Rechte vorbehalten.</p>
+        <p data-key="footer_text">&copy; 2024 Mobintutors. Alle Rechte vorbehalten.</p>
     </footer>
 
     <script src="script.js"></script>
