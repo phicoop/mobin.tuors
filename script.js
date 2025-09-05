@@ -109,7 +109,7 @@ const chatbotResponses = [
     }
     {
         keywords: ["price","price?","Price?","coast", "cost","costs", "how much","How much","how much?", "How much?"],
-        response: "Eine Probelektion kostet 15 CHF, die nach Ablauf der Stunde vom Regulärpreis von 25CHF abgelöst wird."
+        response: "A trial lesson costs 15CHF.The subsequent regular lessons cost 25CHF/hour ."
     },
 ];
 
@@ -158,3 +158,4 @@ userInput.addEventListener('keydown', (event) => {
     }
 
 });
+
