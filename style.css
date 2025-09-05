@@ -24,8 +24,7 @@ h1, h2, h3 {
 
 /* Header und Navigation */
 header {
-   /* background-color: #fff;*/
-   background-image: url('hintergrundbild.png'); 
+    background-image: url('hintergrundbild.png');
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     position: sticky;
     top: 0;
@@ -255,7 +254,7 @@ nav {
 
 /* Impressum */
 .imprint-section {
-    background-color: rgba(255, 255, 255, 0.9);
+    background-color: rgba(255, 255, 255, 0.0);
     text-align: left;
 }
 
@@ -306,7 +305,13 @@ footer {
     .hero-content h1 {
         font-size: 2.5rem;
     }
+    
+    /* Wichtige Anpassung: Stelle sicher, dass der Chatbot-Container sichtbar bleibt */
+    #chatbot-container {
+        display: block; 
+    }
 }
+
 /* JavaScript-basierte Animationen */
 .page-section {
     opacity: 0;
@@ -339,6 +344,7 @@ footer {
         opacity: 0;
     }
 }
+
 .clickable-phone-number {
     cursor: pointer;
     text-decoration: underline;
@@ -348,6 +354,7 @@ footer {
 .clickable-phone-number:hover {
     color: #3498db;
 }
+
 /* --- Chatbot Stile --- */
 #chatbot-container {
     position: fixed;
@@ -465,4 +472,49 @@ footer {
         opacity: 1;
         transform: scale(1);
     }
+}
+
+/* Eleganter, diskreter Sprachumschalter */
+.language-switcher-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-left: 20px;
+    background-color: transparent;
+    border-radius: 5px;
+    padding: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.language-switcher-container:hover {
+    background-color: rgba(255, 255, 255, 0.5); /* Leichter Hover-Effekt */
+}
+
+#language-switcher {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: transparent;
+    border: none;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: #555;
+    cursor: pointer;
+    outline: none;
+}
+
+#language-switcher:hover {
+    color: #3498db;
+}
+
+.language-switcher-container .fa-globe {
+    color: #555;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+}
+
+.language-switcher-container:hover .fa-globe {
+    color: #3498db;
 }
