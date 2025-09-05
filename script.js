@@ -163,7 +163,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const chatbotResponses = [
         { keywords: ["hallo", "hey", "hi"], response: "Hallo! Wie kann ich dir helfen?", response_en: "Hello! How can I help you?" },
         { keywords: ["fächer", "fach", "unterricht", "subjects"], response: "Ich biete Nachhilfe in so ziemlich allen Fächern der Mathematik. Lasse mir einfach deine Unterlagen zukommen und ich schaue mir das ganze schnellstmöglich an!", response_en: "I offer tutoring in almost all subjects of mathematics. Just send me your documents and I will take a look at them as soon as possible!" },
-        { keywords: ["preis", "kosten", "was kostet", "kostet", "price", "cost","how much","how much?", "much?","wie viel"], response: "Eine Probelektion kostet 15 CHF, die nach Ablauf der Stunde vom Regulärpreis von 25CHF abgelöst wird.", response_en: "A trial lesson costs 15 CHF, which is replaced by the regular price of 25CHF after the hour." },
+        { keywords: ["preis", "kosten", "was kostet", "kostet", "price", "cost","how much","how much?", "How much?","How much", "much?","wie viel"], response: "Eine Probelektion kostet 15 CHF, die nach Ablauf der Stunde vom Regulärpreis von 25CHF abgelöst wird.", response_en: "A trial lesson costs 15 CHF, which is replaced by the regular price of 25CHF after the hour." },
         { keywords: ["termin", "buchen", "verfügbarkeit", "zeit", "wann", "appointment", "book", "availability", "time", "when"], response: "Termine sind grundsätzlich von Montag bis und mit Sonntag von 08:30 bis 22:00 Uhr zu buchen.", response_en: "Appointments can be booked from Monday to Sunday from 08:30 to 22:00." },
         { keywords: ["danke", "dankeschön", "super", "thanks", "thank you", "great"], response: "Gern geschehen! Ich helfe dir gerne weiter.", response_en: "You're welcome! I am happy to help you." },
         { keywords: ["kontakt", "email", "telefon", "contact", "phone"], response: "Du findest meine Kontaktinformationen direkt hier auf der Seite.", response_en: "You can find my contact information directly here on the page." }
@@ -211,4 +211,5 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
+
 
