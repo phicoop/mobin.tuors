@@ -518,3 +518,19 @@ footer {
 .language-switcher-container:hover .fa-globe {
     color: #3498db;
 }
+/* Styling für die Handschrift-Animation */
+.writing-animation-container {
+    width: 100%;
+    max-width: 600px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.writing-animation-container img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
