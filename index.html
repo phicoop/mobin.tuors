@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Mobintutors - Dein Nachhilfelehrer</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <header>
+        <nav>
+            <a href="#" class="logo">Mobin.tutors!</a>
+            <div class="nav-links">
+                <a href="#about">Über mich</a>
+                <a href="#contact">Kontakt & Buchen</a>
+                <a href="#imprint">Impressum</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <h1>Lernen leicht gemacht.</h1>
+                <p>Professionelle Nachhilfe, die dich wirklich weiterbringt.</p>
+                <a href="#contact" class="cta-button">Jetzt buchen!</a>
+            </div>
+            <div class="hero-image">
+                <img src="https://via.placeholder.com/600x400" alt="Nachhilfelehrer-Bild">
+            </div>
+        </section>
+
+        <section id="about" class="page-section">
+            <div class="container">
+                <h2>Über mich</h2>
+                <div class="about-content">
+                    <div class="about-text">
+                        <h3>Hallo, ich bin Mobin</h3>
+                        <p>Ich bin ein leidenschaftlicher Nachhilfelehrer mit [ANZAHL] Jahren Erfahrung in der Vermittlung von [FÄCHER]. Mein Ziel ist es, nicht nur Wissen zu vermitteln, sondern auch das Selbstvertrauen meiner Schüler zu stärken. Ich glaube daran, dass jeder lernen kann, wenn er die richtige Unterstützung erhält.</p>
+                        <p>In meinen Stunden konzentriere ich mich auf individuelle Bedürfnisse und erstelle maßgeschneiderte Lernpläne. Gemeinsam überwinden wir Schwierigkeiten und machen das Lernen zu einem positiven Erlebnis. Ob Mathe, Physik oder ein anderes Fach – ich helfe dir dabei, deine Ziele zu erreichen.</p>
+                    </div>
+                    <div class="about-image">
+                        <img src="https://via.placeholder.com/400x400" alt="Ein Bild von dir">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="page-section contact-section">
+            <div class="container">
+                <h2>Kontakt & Buchen</h2>
+                <p>Bereit für den nächsten Schritt? Nimm Kontakt auf oder buche direkt eine Probestunde.</p>
+                <div class="contact-grid">
+                    <div class="contact-info">
+                        <h3>Kontaktinformationen</h3>
+                        <p><i class="fas fa-phone-alt icon"></i> <span id="phone-number" class="clickable-phone-number">+989353821319</span></p>
+                        <p><i class="fab fa-whatsapp icon"></i> <a href="https://wa.link/70p27b" target="_blank">WhatsApp Nachricht senden</a></p>
+                        <p><i class="fas fa-envelope icon"></i> <a href="mailto:mobin.tutors@gmail.com">mobin.tutors@gmail.com</a></p>
+                        <p><i class="fas fa-map-marker-alt icon"></i> Zoom</p>
+                        <a href="mailto:mobin.tutors@gmail.com" class="cta-button">Probestunde anfragen</a>
+                    </div>
+                    <div class="contact-form-container">
+                        <h3>Direkt eine Nachricht senden</h3>
+                        <form action="#" method="post" class="contact-form">
+                            <input type="text" name="name" placeholder="Dein Name" required>
+                            <input type="email" name="email" placeholder="Deine E-Mail-Adresse" required>
+                            <textarea name="message" rows="5" placeholder="Deine Nachricht" required></textarea>
+                            <button type="submit" class="cta-button">Senden</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="imprint" class="page-section imprint-section">
+            <div class="container">
+                <h2>Impressum</h2>
+                <div class="imprint-content">
+                    <p>
+                        [Mobin]<br>
+                        [Peter-debye-weg]<br>
+                        [8045 Zürich]<br><br>
+                        <strong>Kontakt:</strong><br>
+                        Telefon: [0778146402]<br>
+                        E-Mail: [mobin.tutors@gmail.com]
+                    </p>
+                    <p>
+                        <strong>Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV:</strong><br>
+                        [Mobin]<br>
+                        [Peter-debye-weg]
+                    </p>
+                </div>
+            </div>
+        </section>
+        <div id="chatbot-container">
+    <div id="chatbot-icon">
+        <i class="fas fa-robot"></i>
+    </div>
+    <div id="chatbot-window">
+        <div id="chatbot-header">
+            <h3>Fragen an den Nachhilfe-Bot</h3>
+            <span id="close-btn">&times;</span>
+        </div>
+        <div id="chatbot-messages">
+            <div class="message bot-message"> Hast du fragen über den Unterricht, Kosten, zeitliche Verfügbarkeit oder änhnliches? Dann frag mich gerne!</div>
+        </div>
+        <div id="chatbot-input">
+            <input type="text" id="user-input" placeholder="Nachricht eingeben...">
+            <button id="send-btn"><i class="fas fa-paper-plane"></i></button>
+        </div>
+    </div>
+</div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 [Mobintutors]. Alle Rechte vorbehalten.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
