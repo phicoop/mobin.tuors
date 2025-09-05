@@ -6,8 +6,8 @@
       stroke-width: 3px;
       stroke-linecap: round;
       stroke-linejoin: round;
-      stroke-dasharray: 1000;
-      stroke-dashoffset: 1000;
+      stroke-dasharray: 2000;
+      stroke-dashoffset: 2000;
       animation: write-text 4s ease-in-out forwards;
     }
     @keyframes write-text {
@@ -16,5 +16,6 @@
       }
     }
   </style>
-  <path class="cls-1" d="M 20,60 C 30,40 50,40 60,60 S 80,80 90,60 M 110,60 C 120,40 140,40 150,60 M 170,60 C 180,40 200,40 210,60 M 230,60 C 240,40 260,40 270,60 M 290,60 C 300,40 320,40 330,60 M 350,60 C 360,40 380,40 390,60 M 410,60 C 420,40 440,40 450,60"/>
+  <path class="cls-1" d="M30 50 H 50 L 55 35 Q 60 20 70 35 L 75 50 M 90 50 L 100 50 M 105 50 H 125 L 130 35 Q 135 20 145 35 L 150 50 M 165 50 L 175 50 M 180 50 H 200 L 205 35 Q 210 20 220 35 L 225 50 M 240 50 H 260 M 265 50 H 285 L 290 35 Q 295 20 305 35 L 310 50 M 325 50 H 345 M 350 50 L 360 50 M 365 50 H 385 L 390 35 Q 395 20 405 35 L 410 50"/>
+  <path class="cls-1" d="M425 50 Q 430 40 435 50 Q 440 60 445 50 M 460 50 Q 465 40 470 50 Q 475 60 480 50"/>
 </svg>
