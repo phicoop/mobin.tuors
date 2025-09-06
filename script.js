@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
             form_message_placeholder: "Deine Nachricht",
             form_send_button: "Senden",
             imprint_title: "Impressum",
-            imprint_content1: "Mobin<br>Peter-debye-weg<br>8045 Zürich",
+            imprint_content1: "Rahel Zinga<br>Peter-debye-weg<br>8045 Zürich",
             imprint_content2: "Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV:",
             footer_text: "&copy; 2025 Mobintutors. Alle Rechte vorbehalten.",
             chatbot_title: "Fragen an den Nachhilfe-Bot",
@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
             form_message_placeholder: "Your Message",
             form_send_button: "Send",
             imprint_title: "Imprint",
-            imprint_content1: "Mobin<br>Peter-debye-weg<br>8045 Zürich",
+            imprint_content1: "Rahel Zinga<br>Peter-debye-weg<br>8045 Zürich",
             imprint_content2: "Responsible for content according to § 55 Abs. 2 RStV:",
             footer_text: "&copy; 2025 Mobintutors. All Rights Reserved.",
             chatbot_title: "Questions for the Tutoring Bot",
@@ -213,6 +213,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
+
 
 
 
