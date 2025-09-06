@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 100">
+  <style>
+    .cls-1 {
+      fill: none;
+      stroke: #2c3e50;
+      stroke-width: 3px;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-dasharray: 2000;
+      stroke-dashoffset: 2000;
+      animation: write-text 4s ease-in-out forwards;
+    }
+    @keyframes write-text {
+      to {
+        stroke-dashoffset: 0;
+      }
+    }
+  </style>
+  <path class="cls-1" d="M30 50 H 50 L 55 35 Q 60 20 70 35 L 75 50 M 90 50 L 100 50 M 105 50 H 125 L 130 35 Q 135 20 145 35 L 150 50 M 165 50 L 175 50 M 180 50 H 200 L 205 35 Q 210 20 220 35 L 225 50 M 240 50 H 260 M 265 50 H 285 L 290 35 Q 295 20 305 35 L 310 50 M 325 50 H 345 M 350 50 L 360 50 M 365 50 H 385 L 390 35 Q 395 20 405 35 L 410 50"/>
+  <path class="cls-1" d="M425 50 Q 430 40 435 50 Q 440 60 445 50 M 460 50 Q 465 40 470 50 Q 475 60 480 50"/>
+</svg>
