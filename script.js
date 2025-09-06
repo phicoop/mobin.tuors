@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
             about_name: "Hi, I'm Mobin",
             about_text1: "I'm a passionate Mathematics Bachelor's graduate with two years of experience as a teaching assistant, recently transitioning to online tutoring. My goal is not just to transfer knowledge but to strengthen my students' confidence. I believe that everyone can learn if they have the right support.",
             about_text2: "In my sessions, I focus on individual needs and create customized learning plans. Together, we overcome challenges and make learning a positive experience. Whether it's Algebra, Calculus, or another subject, I'm here to help you achieve your goals",
-            about_text3: "Sessions are held in english and over Zoom and can be booked from MO-SO from 08:30 till 22:00 pm. The trial lesson costs 15CHf and the regular lesson 25CHF/ hr. The Sessions are tailored towards  Colledge/University/ETH leveled students",
+            about_text3: "Sessions are held in english and over Zoom and can be booked from MO-SO from 08:30 till 22:00 pm. The trial lesson costs 15CHf and the regular lesson 25CHF/hr. The Sessions are tailored towards Colledge/University/ETH leveled students",
             contact_title: "Contact & Booking",
             contact_subtitle: "Ready for the next step? Get in touch or book a trial lesson directly.",
             contact_info_title: "Contact Information",
@@ -213,6 +213,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
+
 
 
 
