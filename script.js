@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
             imprint_title: "Impressum",
             imprint_content1: "Mobin<br>Peter-debye-weg<br>8045 Zürich",
             imprint_content2: "Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV:",
-            footer_text: "&copy; 2024 Mobintutors. Alle Rechte vorbehalten.",
+            footer_text: "&copy; 2025 Mobintutors. Alle Rechte vorbehalten.",
             chatbot_title: "Fragen an den Nachhilfe-Bot",
             chatbot_intro: "Hast du fragen über den Unterricht, Kosten, zeitliche Verfügbarkeit oder ähnliches? Dann frag mich gerne!",
             chatbot_placeholder: "Nachricht eingeben...",
@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
             about_name: "Hi, I'm Mobin",
             about_text1: "I'm a passionate Math Bachelor graduate with 2 years of life experience in teaching as a teachingassistent and recently switched to online tutoring. My goal is not just to transfer knowledge but to strengthen my students' confidence. I believe that everyone can learn if they have the right support.",
             about_text2: "In my sessions, I focus on individual needs and create customized learning plans. Together, we overcome challenges and make learning a positive experience. Whether it's Algebra, Calculus or another subject – I'm here to help you achieve your goals. ",
-            about_text3: "Sessions are held in english and over Zoom and can be booked from MO-SO from 08:30 till 22:00 pm. The trial lesson costs 15CHf and anything after that first hour will be accordning to the regular price of 25CHF/ hr if the trial lesson isn't exeeded in duration due to getting to know eachother or organisational talks rather than teaching. The lessons are tailored towards  Colledge/University/ETH leveled students",
+            about_text3: "Sessions are held in english and over Zoom and can be booked from MO-SO from 08:30 till 22:00 pm. The trial lesson costs 15CHf and the regular lesson 25CHF/ hr. The Sessions are tailored towards  Colledge/University/ETH leveled students",
             contact_title: "Contact & Booking",
             contact_subtitle: "Ready for the next step? Get in touch or book a trial lesson directly.",
             contact_info_title: "Contact Information",
@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
             imprint_title: "Imprint",
             imprint_content1: "Mobin<br>Peter-debye-weg<br>8045 Zürich",
             imprint_content2: "Responsible for content according to § 55 Abs. 2 RStV:",
-            footer_text: "&copy; 2024 Mobintutors. All Rights Reserved.",
+            footer_text: "&copy; 2025 Mobintutors. All Rights Reserved.",
             chatbot_title: "Questions for the Tutoring Bot",
             chatbot_intro: "Do you have questions about the lessons, costs, availability, or similar topics? Feel free to ask me!",
             chatbot_placeholder: "Type a message...",
@@ -213,6 +213,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
+
 
 
 
