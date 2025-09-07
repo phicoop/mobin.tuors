@@ -562,21 +562,13 @@ footer {
     display: block;
 }
 
-/* --- Definitive Mobile Anpassungen für den Header --- */
+/* Definitive Mobile Anpassungen für den Header */
 @media (max-width: 768px) {
     /* Header Container anpassen */
-    header {
-        position: relative; /* Stellt sicher, dass Child-Elemente richtig platziert werden */
-        z-index: 1000; /* Stellt sicher, dass der Header über allem liegt */
+    nav {
         display: flex;
-        flex-direction: column;
+        justify-content: space-between; /* Logo und Sprachauswahl an den Rand schieben */
         align-items: center;
-        padding: 10px 0;
-    }
-
-    /* Logo anpassen */
-    header .logo {
-        margin-bottom: 15px; /* Abstand zum Sprachumschalter */
     }
 
     /* Navigationslinks verstecken */
@@ -584,14 +576,18 @@ footer {
         display: none;
     }
 
-    /* Sprachumschalter sichtbar und zentriert machen */
+    /* Sprachumschalter sichtbar machen */
     .language-switcher-container {
-        display: flex; /* Stellt sicher, dass der Container ein Flexbox-Layout hat */
-        align-items: center; /* Vertikale Zentrierung */
-        justify-content: center; /* Horizontale Zentrierung */
-        position: static; /* Hebt vorherige absolute Positionierung auf */
-        margin: 0 auto; /* Zentriert den Container */
-        width: 100%;
+        display: flex;
+        align-items: center;
+        margin-left: auto; /* Schiebt es ganz nach rechts */
+    }
+
+    /* Verhindert, dass das Logo in der Größe wächst und schiebt den Sprachumschalter nach rechts */
+    .logo {
+        flex-shrink: 0;
     }
 }
+
+
 
