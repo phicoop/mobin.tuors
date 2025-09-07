@@ -534,6 +534,54 @@ footer {
     display: block;
 }
 
+/* --- Mobile Anpassungen (Verbesserte Version) --- */
+@media (max-width: 768px) {
+    /* Header anpassen, um die Elemente zu zentrieren */
+    header nav {
+        flex-direction: column; /* Elemente untereinander anordnen */
+        align-items: center;    /* Horizontale Zentrierung */
+        text-align: center;     /* Text zentrieren */
+        padding: 10px;
+    }
+
+    /* Logo anpassen */
+    header .logo {
+        margin-bottom: 10px; /* Abstand nach unten für das Logo */
+    }
+
+    /* Navigationslinks verstecken (ist bereits in deinem Code, aber hier noch einmal zur Sicherheit) */
+    .nav-links {
+        display: none;
+    }
+
+    /* Sprachumschalter zentrieren und positionieren */
+    .language-switcher-container {
+        position: static;      /* Positionierung aufheben */
+        margin-left: 0;        /* Linken Margin aufheben */
+        margin-top: 10px;      /* Abstand vom Logo */
+        justify-content: center; /* Horizontale Zentrierung */
+    }
+
+    /* Sicherstellen, dass die Hero Section auf kleineren Bildschirmen gut aussieht */
+    .hero {
+        padding: 20px;
+    }
+
+    .hero-content {
+        padding: 20px;
+    }
+
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+
+    /* Chatbot-Container immer sichtbar machen */
+    #chatbot-container {
+        display: block;
+        right: 10px;
+        bottom: 10px;
+    }
+}
 
 
 
