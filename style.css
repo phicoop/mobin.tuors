@@ -574,7 +574,7 @@ footer {
 
     /* Abstand vom Logo nach unten */
     .logo {
-        margin-bottom: 15px;
+        margin-bottom: 4px;
     }
 
     /* Navigationslinks verstecken */
@@ -589,3 +589,4 @@ footer {
         width: 100%;
     }
 }
+
