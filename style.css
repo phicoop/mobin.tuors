@@ -564,17 +564,11 @@ footer {
 
 /* Definitive Mobile Anpassungen für den Header */
 @media (max-width: 768px) {
-    /* Logo und Sprachumschalter untereinander zentrieren */
+    /* Header Container anpassen */
     nav {
         display: flex;
-        flex-direction: column;
+        justify-content: space-between; /* Schiebt das Logo und die Sprachauswahl an die Ränder */
         align-items: center;
-        padding: 10px 20px;
-    }
-
-    /* Abstand vom Logo nach unten */
-    .logo {
-        margin-bottom: 4px;
     }
 
     /* Navigationslinks verstecken */
@@ -582,11 +576,31 @@ footer {
         display: none;
     }
 
-    /* Sprachumschalter sichtbar und zentriert machen */
+    /* Sprachumschalter sichtbar machen und nach rechts schieben */
     .language-switcher-container {
         display: flex;
-        justify-content: center;
-        width: 100%;
+        align-items: center;
+        margin-left: auto; /* Schiebt es ganz nach rechts */
+    }
+
+    /* Verhindert, dass das Logo in der Größe wächst und schiebt den Sprachumschalter nach rechts */
+    .logo {
+        flex-shrink: 0;
+    }
+
+    /* Die anderen mobilen Anpassungen */
+    .hero {
+        flex-direction: column-reverse;
+        text-align: center;
+    }
+    
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+    
+    #chatbot-container {
+        display: block;  
     }
 }
+
 
