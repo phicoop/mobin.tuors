@@ -292,11 +292,39 @@ footer {
 }
 
 /* Mobile Anpassungen */
+/* --- Mobile Anpassungen (Final) --- */
 @media (max-width: 768px) {
+    /* Navigationslinks verstecken */
     .nav-links {
         display: none;
     }
 
+    /* Header Container anpassen */
+    header {
+        position: relative;
+        z-index: 1000;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 10px 0;
+    }
+
+    /* Logo anpassen */
+    header .logo {
+        margin-bottom: 15px;
+    }
+
+    /* Sprachumschalter sichtbar und zentriert machen */
+    .language-switcher-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: static;
+        margin: 0 auto;
+        width: 100%;
+    }
+
+    /* Hero Section (Home) anpassen */
     .hero {
         flex-direction: column-reverse;
         text-align: center;
@@ -308,7 +336,7 @@ footer {
     
     /* Wichtige Anpassung: Stelle sicher, dass der Chatbot-Container sichtbar bleibt */
     #chatbot-container {
-        display: block; 
+        display: block;
     }
 }
 
@@ -566,3 +594,4 @@ footer {
         width: 100%;
     }
 }
+
