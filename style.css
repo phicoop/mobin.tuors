@@ -563,7 +563,7 @@ footer {
 }
 
 /* Definitive Mobile Anpassungen für den Header */
-@media (max-width: 768px) {
+@media (max-width: 600px) {
     /* Header Container anpassen */
     nav {
         display: flex;
@@ -602,5 +602,6 @@ footer {
         display: block;  
     }
 }
+
 
 
