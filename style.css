@@ -534,54 +534,35 @@ footer {
     display: block;
 }
 
-/* --- Mobile Anpassungen (Verbesserte Version) --- */
+/* --- Definitive Mobile Anpassungen für den Header --- */
 @media (max-width: 768px) {
-    /* Header anpassen, um die Elemente zu zentrieren */
-    header nav {
-        flex-direction: column; /* Elemente untereinander anordnen */
-        align-items: center;    /* Horizontale Zentrierung */
-        text-align: center;     /* Text zentrieren */
-        padding: 10px;
+    /* Header Container anpassen */
+    header {
+        position: relative; /* Stellt sicher, dass Child-Elemente richtig platziert werden */
+        z-index: 1000; /* Stellt sicher, dass der Header über allem liegt */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 10px 0;
     }
 
     /* Logo anpassen */
     header .logo {
-        margin-bottom: 10px; /* Abstand nach unten für das Logo */
+        margin-bottom: 15px; /* Abstand zum Sprachumschalter */
     }
 
-    /* Navigationslinks verstecken (ist bereits in deinem Code, aber hier noch einmal zur Sicherheit) */
+    /* Navigationslinks verstecken */
     .nav-links {
         display: none;
     }
 
-    /* Sprachumschalter zentrieren und positionieren */
+    /* Sprachumschalter sichtbar und zentriert machen */
     .language-switcher-container {
-        position: static;      /* Positionierung aufheben */
-        margin-left: 0;        /* Linken Margin aufheben */
-        margin-top: 10px;      /* Abstand vom Logo */
+        display: flex; /* Stellt sicher, dass der Container ein Flexbox-Layout hat */
+        align-items: center; /* Vertikale Zentrierung */
         justify-content: center; /* Horizontale Zentrierung */
-    }
-
-    /* Sicherstellen, dass die Hero Section auf kleineren Bildschirmen gut aussieht */
-    .hero {
-        padding: 20px;
-    }
-
-    .hero-content {
-        padding: 20px;
-    }
-
-    .hero-content h1 {
-        font-size: 2rem;
-    }
-
-    /* Chatbot-Container immer sichtbar machen */
-    #chatbot-container {
-        display: block;
-        right: 10px;
-        bottom: 10px;
+        position: static; /* Hebt vorherige absolute Positionierung auf */
+        margin: 0 auto; /* Zentriert den Container */
+        width: 100%;
     }
 }
-
-
-
