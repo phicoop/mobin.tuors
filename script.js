@@ -248,11 +248,15 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    updateContent(getLang());
+    // Die Sprache ergibt sich aus der Seite: mobintutors.ch = Deutsch, mobintutors.ch/en/ = Englisch.
+    // So kann Google beide Versionen getrennt finden.
+    const pageLang = document.documentElement.lang.toLowerCase().startsWith('en') ? 'en' : 'de';
+    if (languageSwitcher) languageSwitcher.value = pageLang;
+    updateContent(pageLang);
     if (languageSwitcher) {
         languageSwitcher.addEventListener('change', () => {
-            updateContent(getLang());
-            renderQuickReplies(); // Schnellantwort-Knöpfe in neuer Sprache
+            const target = pageLang === 'de' ? 'en/' : '../';
+            window.location.href = target + window.location.hash;
         });
     }
 
