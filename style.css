@@ -59,6 +59,8 @@ h1, h2, h3 {
     color: var(--navy);
     line-height: 1.2;
     overflow-wrap: break-word;
+    -webkit-hyphens: auto; /* lange deutsche Wörter auf kleinen Handys trennen */
+    hyphens: auto;
 }
 
 .container {
@@ -267,9 +269,10 @@ nav {
 }
 
 .page-section h2 {
-    font-size: clamp(1.8rem, 1.3rem + 2vw, 2.5rem);
+    font-size: clamp(1.6rem, 1.2rem + 2vw, 2.5rem);
     margin: 0 0 20px;
     display: inline-block;
+    max-width: 100%;
 }
 
 .page-section h2::after {
@@ -411,6 +414,218 @@ footer {
 
 footer p {
     margin: 0;
+}
+
+/* ---------- Hero: Kurzinfos ---------- */
+.hero-facts {
+    list-style: none;
+    padding: 0;
+    margin: 18px 0 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+}
+
+.hero-facts li {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 6px 14px;
+    border-radius: 999px;
+    background-color: #e8f2fb;
+    color: var(--navy);
+    font-weight: 600;
+    font-size: 0.92rem;
+}
+
+.hero-facts i {
+    color: var(--blue);
+}
+
+/* ---------- Preise ---------- */
+.prices-section {
+    background-color: rgba(255, 255, 255, 0.92);
+}
+
+.price-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: clamp(20px, 4vw, 32px);
+    margin-top: 30px;
+}
+
+.price-card {
+    flex: 1 1 280px;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fff;
+    border: 2px solid #e3e8ef;
+    border-radius: var(--radius);
+    padding: clamp(22px, 4vw, 32px);
+    text-align: center;
+}
+
+.price-card--main {
+    border-color: var(--blue);
+}
+
+.price-card h3 {
+    margin: 0;
+    font-size: 1.25rem;
+}
+
+.price-amount {
+    margin: 8px 0 12px;
+    font-size: clamp(2.2rem, 1.8rem + 2vw, 3rem);
+    font-weight: 700;
+    line-height: 1.1;
+    color: var(--blue);
+}
+
+.price-card p:not(.price-amount) {
+    margin: 0 0 22px;
+    color: var(--text-soft);
+}
+
+.price-card .cta-button {
+    margin-top: auto; /* Buttons beider Karten auf gleicher Höhe */
+}
+
+.price-note {
+    max-width: 640px;
+    margin: 26px auto 0;
+    color: var(--text-soft);
+}
+
+/* ---------- Erfahrungsberichte ---------- */
+.testimonials-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 24px;
+    margin-top: 30px;
+}
+
+.testimonial {
+    flex: 1 1 280px;
+    max-width: 380px;
+    margin: 0;
+    padding: 24px;
+    background-color: #fff;
+    border-left: 4px solid var(--blue);
+    border-radius: 0 var(--radius) var(--radius) 0;
+    text-align: left;
+}
+
+.testimonial blockquote {
+    margin: 0 0 12px;
+    font-size: 1.05rem;
+}
+
+.testimonial blockquote::before { content: '«'; }
+.testimonial blockquote::after { content: '»'; }
+
+.testimonial figcaption {
+    font-weight: 600;
+    color: var(--navy);
+    font-size: 0.92rem;
+}
+
+/* ---------- FAQ ---------- */
+.faq-section {
+    background-color: rgba(232, 234, 246, 0.9);
+}
+
+.faq-list {
+    max-width: 780px;
+    margin: 30px auto 0;
+    text-align: left;
+}
+
+.faq-list details {
+    background-color: #fff;
+    border-radius: var(--radius);
+    margin-bottom: 10px;
+    border: 1px solid #e3e8ef;
+}
+
+.faq-list summary {
+    cursor: pointer;
+    list-style: none;
+    padding: 16px 48px 16px 20px;
+    font-weight: 600;
+    color: var(--navy);
+    position: relative;
+    min-height: 44px;
+}
+
+.faq-list summary::-webkit-details-marker { display: none; }
+
+.faq-list summary::after {
+    content: '+';
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.4rem;
+    line-height: 1;
+    color: var(--blue);
+}
+
+.faq-list details[open] summary::after {
+    content: '−';
+}
+
+.faq-list details p {
+    margin: 0;
+    padding: 0 20px 18px;
+    color: var(--text-soft);
+}
+
+/* ---------- Datenschutz ---------- */
+.privacy-section h3 {
+    font-size: 1.05rem;
+    margin: 22px 0 4px;
+}
+
+.privacy-section p {
+    margin: 0 0 8px;
+}
+
+.form-privacy {
+    font-size: 0.85rem;
+    color: var(--text-soft);
+    margin: -4px 0 10px;
+}
+
+.form-privacy a {
+    color: var(--blue);
+}
+
+/* ---------- Footer-Links ---------- */
+.footer-links {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px 24px;
+    margin-bottom: 10px;
+}
+
+.footer-links a {
+    color: #fff;
+    text-decoration: none;
+    opacity: 0.85;
+    padding: 6px 0;
+}
+
+.footer-links a:hover,
+.footer-links a:focus-visible {
+    opacity: 1;
+    text-decoration: underline;
 }
 
 /* ---------- Chatbot ---------- */
