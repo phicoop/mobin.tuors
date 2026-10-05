@@ -44,6 +44,52 @@ document.addEventListener('DOMContentLoaded', () => {
             form_send_button: "Senden",
             imprint_title: "Impressum",
             imprint_content1: "Rahel Zinga<br>Peter-Debye-Weg<br>8045 Zürich",
+document.addEventListener('DOMContentLoaded', () => {
+
+    // =====================================================================
+    //  EINSTELLUNGEN – hier kannst du den Bot ohne Programmierkenntnisse anpassen
+    // =====================================================================
+    const SETTINGS = {
+        // true = Mobin ist gerade nicht erreichbar. Buchungs- und Kontaktantworten
+        // bekommen dann automatisch den Hinweis unten angehängt.
+        paused: true,
+        pausedNote: {
+            de: "Hinweis: Mobin ist wegen der aktuellen Lage in seinem Land vorübergehend nicht erreichbar. Du kannst deine Anfrage trotzdem über das Kontaktformular auf dieser Seite senden, sie wird weitergeleitet.",
+            en: "Note: Due to the current situation in his country, Mobin is temporarily unreachable. You can still send your request through the contact form on this page and it will be passed on."
+        },
+        replyDelay: 450 // Millisekunden, bis der Bot antwortet
+    };
+
+    // =====================================================================
+    //  ÜBERSETZUNGEN DER SEITE
+    // =====================================================================
+    const translations = {
+        de: {
+            title: "Mobintutors - Dein Nachhilfelehrer",
+            logo: "Mobin.tutors!",
+            nav_about: "Über mich",
+            nav_contact: "Kontakt & Buchen",
+            nav_imprint: "Impressum",
+            hero_title: "Lernen leicht gemacht.",
+            hero_subtitle: "Professionelle Nachhilfe, die dich wirklich weiterbringt.",
+            cta_home: "Jetzt buchen!",
+            about_title: "Über mich",
+            about_name: "Hallo, ich bin Mobin",
+            about_text1: "Ich bin ein leidenschaftlicher Nachhilfelehrer mit drei Jahren Erfahrung in der Vermittlung verschiedener Mathematikfächer. Bisher haben alle meine Schülerinnen und Schüler ihre Matheprüfungen erfolgreich bestanden. Mein Ziel ist es, nicht nur Wissen zu vermitteln, sondern auch das Selbstvertrauen meiner Schülerinnen und Schüler zu stärken. Ich glaube daran, dass jeder lernen kann, wenn er die richtige Unterstützung erhält.",
+            about_text2: "In meinen Stunden gehe ich auf deine individuellen Bedürfnisse ein und erstelle massgeschneiderte Lernpläne. Gemeinsam überwinden wir Schwierigkeiten und machen das Lernen zu einem positiven Erlebnis. Ob Algebra, Analysis, diskrete Mathematik oder ein anderes Mathematikfach – ich helfe dir, deine Ziele zu erreichen.",
+            about_text3: "Der Unterricht findet auf Englisch über Zoom statt und kann von Montag bis Sonntag zwischen 08:30 und 22:00 Uhr gebucht werden. Die Probelektion kostet pauschal 15 CHF, unabhängig von der Dauer, eine reguläre Lektion von 1 Stunde 20 Minuten kostet 35 CHF. Unterrichtet werden alle Stufen, solange Englisch als Unterrichtssprache für dich kein Problem ist.",
+            contact_title: "Kontakt & Buchen",
+            contact_subtitle: "Bereit für den nächsten Schritt? Nimm Kontakt auf oder buche direkt eine Probestunde.",
+            contact_info_title: "Kontaktinformationen",
+            contact_info_link: "WhatsApp-Nachricht senden",
+            cta_contact: "Probestunde anfragen",
+            contact_form_title: "Direkt eine Nachricht senden",
+            form_name_placeholder: "Dein Name",
+            form_email_placeholder: "Deine E-Mail-Adresse",
+            form_message_placeholder: "Deine Nachricht",
+            form_send_button: "Senden",
+            imprint_title: "Impressum",
+            imprint_content1: "Rahel Zinga<br>Peter-Debye-Weg<br>8045 Zürich",
             imprint_content2: "Verantwortlich für den Inhalt:",
             footer_text: "&copy; 2025 Mobintutors. Alle Rechte vorbehalten.",
             chatbot_title: "Fragen an den Nachhilfe-Bot",
@@ -63,9 +109,9 @@ document.addEventListener('DOMContentLoaded', () => {
             cta_home: "Book now!",
             about_title: "About Me",
             about_name: "Hi, I'm Mobin",
-            about_text1: "I'm a passionate mathematics graduate with two years of experience as a teaching assistant, and I recently moved into online tutoring. My goal is not just to pass on knowledge but to strengthen my students' confidence. I believe everyone can learn with the right support.",
+            about_text1: "I'm a passionate mathematics graduate with three years of teaching experience, first as a teaching assistant and now as an online tutor. So far, every one of my students has passed their math exams. My goal is not just to pass on knowledge but to strengthen my students' confidence. I believe everyone can learn with the right support.",
             about_text2: "In my sessions, I focus on your individual needs and create customized learning plans. Together, we overcome challenges and make learning a positive experience. Whether it's algebra, calculus, discrete math or another area of mathematics, I'm here to help you reach your goals.",
-            about_text3: "Sessions are held in English over Zoom and can be booked Monday to Sunday from 08:30 to 22:00. The trial lesson costs 15 CHF, and regular lessons cost 25 CHF per hour. Sessions are aimed at high school, college, university and ETH students.",
+            about_text3: "Sessions are held in English over Zoom and can be booked Monday to Sunday from 08:30 to 22:00. The trial lesson costs a flat 15 CHF regardless of length, and a regular lesson of 1 hour 20 minutes costs 35 CHF. All levels are welcome, as long as learning in English works for you.",
             contact_title: "Contact & Booking",
             contact_subtitle: "Ready for the next step? Get in touch or book a trial lesson directly.",
             contact_info_title: "Contact Information",
@@ -174,20 +220,20 @@ document.addEventListener('DOMContentLoaded', () => {
         {
             id: 'price',
             keywords: ['preis', 'kost', 'tarif', 'gebuehr', 'chf', 'franken', 'geld', 'teuer', 'guenstig', 'billig', 'wie viel', 'wieviel', 'price', 'cost', 'fee', 'rate', 'expensive', 'cheap', 'how much'],
-            de: "Die Probelektion kostet 15 CHF. Danach kostet jede Lektion 25 CHF pro Stunde.",
-            en: "The trial lesson costs 15 CHF. After that, each lesson costs 25 CHF per hour."
+            de: "Die Probelektion kostet pauschal 15 CHF, egal wie lange sie dauert. Eine reguläre Lektion dauert 1 Stunde 20 Minuten und kostet 35 CHF.",
+            en: "The trial lesson costs a flat 15 CHF, no matter how long it takes. A regular lesson lasts 1 hour 20 minutes and costs 35 CHF."
         },
         {
             id: 'payment',
-            keywords: ['bezahl', 'zahl', 'twint', 'bar', 'ueberweis', 'rechnung', 'paypal', 'karte', 'pay', 'payment', 'invoice', 'card', 'cash'],
+            keywords: ['bezahl', 'zahl', 'twint', 'bar', 'ueberweis', 'paypal', 'karte', 'pay', 'payment', 'card', 'cash'],
             de: "Die Zahlungsart wird bei der Buchung direkt abgesprochen. Schreib einfach über das Kontaktformular, welche Variante dir am besten passt.",
             en: "The payment method is agreed on directly when you book. Just mention your preferred option in the contact form."
         },
         {
             id: 'trial', pausedNote: true,
             keywords: ['probe', 'schnupper', 'kennenlern', 'erste stunde', 'erste lektion', 'gratis', 'kostenlos', 'trial', 'first lesson', 'test lesson', 'free lesson'],
-            de: "Die Probelektion kostet 15 CHF. Dabei lernt ihr euch kennen, Mobin schaut sich deinen Stoff an und ihr legt gemeinsam einen Plan fest. Anfragen kannst du sie über den Knopf «Probestunde anfragen» oder das Kontaktformular.",
-            en: "The trial lesson costs 15 CHF. You get to know each other, Mobin looks at your material, and together you set a plan. You can request it with the «Request a trial lesson» button or the contact form."
+            de: "Die Probelektion kostet pauschal 15 CHF und hat keine feste Dauer – sie dauert so lange, wie du brauchst. Dabei lernt ihr euch kennen, Mobin schaut sich deinen Stoff an und ihr legt gemeinsam einen Plan fest. Anfragen kannst du sie über den Knopf «Probestunde anfragen» oder das Kontaktformular.",
+            en: "The trial lesson costs a flat 15 CHF and has no fixed length – it takes as long as you need. You get to know each other, Mobin looks at your material, and together you set a plan. You can request it with the «Request a trial lesson» button or the contact form."
         },
         {
             id: 'subjects',
@@ -202,16 +248,22 @@ document.addEventListener('DOMContentLoaded', () => {
             en: "The focus is clearly on mathematics. For math-heavy subjects like physics or theoretical computer science, it's worth sending a quick request through the contact form."
         },
         {
+            id: 'gymnasium',
+            keywords: ['gymi', 'gymnasium', 'gymnasiast', 'kanti', 'kantonsschule', 'mittelschule', 'matura', 'maturitaet', 'maturaarbeit', 'aufnahmepruefung', 'gymipruefung', 'high school', 'secondary school', 'a level'],
+            de: "Ja, Mobin gibt auch Lektionen für Schülerinnen und Schüler am Gymnasium bzw. an der Kanti, zum Beispiel zur Vorbereitung auf Prüfungen oder die Matura. Der Unterricht findet allerdings nur auf Englisch statt.",
+            en: "Yes, Mobin also teaches high school students, for example to prepare for exams or the Matura. Lessons are held in English only."
+        },
+        {
             id: 'level',
-            keywords: ['niveau', 'stufe', 'gymi', 'gymnasium', 'kanti', 'kantonsschule', 'matura', 'uni', 'universitaet', 'eth', 'epfl', 'fh', 'fachhochschule', 'hochschule', 'bachelor', 'master', 'phd', 'doktor', 'sek', 'oberstufe', 'primar', 'klasse', 'level', 'high school', 'college', 'university', 'grade'],
-            de: "Der Unterricht richtet sich vor allem an Gymnasium/Kanti, Fachhochschule, Universität und ETH. Mobin hat auch schon ETH- und Doktoratsstudierende begleitet. Für jüngere Schülerinnen und Schüler frag am besten kurz nach.",
-            en: "Lessons are aimed mainly at high school, college, university and ETH level. Mobin has also tutored ETH and PhD students. For younger students, just send a quick question."
+            keywords: ['niveau', 'stufe', 'uni', 'universitaet', 'eth', 'epfl', 'fh', 'fachhochschule', 'hochschule', 'bachelor', 'master', 'phd', 'doktor', 'sek', 'oberstufe', 'primar', 'level', 'college', 'university', 'grade'],
+            de: "Mobin unterrichtet alle Stufen, von der Schule über Gymnasium/Kanti bis zu Fachhochschule, Universität und ETH. Einzige Voraussetzung: Der Unterricht findet auf Englisch statt, das sollte für dich also kein Problem sein. Mobin hat auch schon ETH- und Doktoratsstudierende begleitet.",
+            en: "Mobin teaches all levels, from school and high school to college, university and ETH. The only requirement is that lessons are in English, so that needs to work for you. Mobin has also tutored ETH and PhD students."
         },
         {
             id: 'exam',
-            keywords: ['pruefung', 'basispruefung', 'klausur', 'test', 'vorbereit', 'lernplan', 'durchgefallen', 'nachpruefung', 'exam', 'midterm', 'final', 'prepare', 'preparation', 'failed'],
-            de: "Prüfungsvorbereitung ist ein Schwerpunkt. Mobin erstellt dir einen Lernplan, geht alte Prüfungen mit dir durch und übt gezielt deine Schwachstellen. Je früher du dich meldest, desto besser lässt sich planen.",
-            en: "Exam preparation is a key focus. Mobin creates a study plan, works through past exams with you and targets your weak spots. The earlier you get in touch, the better you can plan."
+            keywords: ['pruefung', 'basispruefung', 'klausur', 'test', 'vorbereit', 'lernplan', 'durchgefallen', 'nachpruefung', 'bestehen', 'bestanden', 'erfolg', 'note', 'noten', 'exam', 'midterm', 'final', 'prepare', 'preparation', 'failed', 'pass', 'grade', 'success'],
+            de: "Prüfungsvorbereitung ist ein Schwerpunkt. Mobin erstellt dir einen Lernplan, geht alte Prüfungen mit dir durch und übt gezielt deine Schwachstellen. Bisher haben alle seine Schülerinnen und Schüler ihre Matheprüfungen bestanden. Je früher du dich meldest, desto besser lässt sich planen.",
+            en: "Exam preparation is a key focus. Mobin creates a study plan, works through past exams with you and targets your weak spots. So far, all of his students have passed their math exams. The earlier you get in touch, the better you can plan."
         },
         {
             id: 'times', pausedNote: true,
@@ -228,8 +280,8 @@ document.addEventListener('DOMContentLoaded', () => {
         {
             id: 'duration',
             keywords: ['dauer', 'wie lange', 'minuten', 'stunde lang', 'how long', 'duration', 'minutes', 'length'],
-            de: "Eine reguläre Lektion dauert 60 Minuten. Wenn du kürzere oder längere Einheiten brauchst, lässt sich das absprechen.",
-            en: "A regular lesson lasts 60 minutes. Shorter or longer sessions can be arranged."
+            de: "Eine reguläre Lektion dauert 1 Stunde 20 Minuten (80 Minuten). Die Probelektion hat keine feste Dauer. Wenn du kürzere oder längere Einheiten brauchst, lässt sich das absprechen.",
+            en: "A regular lesson lasts 1 hour 20 minutes (80 minutes). The trial lesson has no fixed length. Shorter or longer sessions can be arranged."
         },
         {
             id: 'online',
@@ -251,21 +303,45 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         {
             id: 'group',
-            keywords: ['gruppe', 'zu zweit', 'zu dritt', 'freund', 'kollege', 'zusammen', 'group', 'together', 'friend', 'classmate'],
-            de: "Lektionen zu zweit oder in kleinen Gruppen sind auf Anfrage möglich. Schreib einfach, wie viele ihr seid.",
-            en: "Lessons for two or small groups are possible on request. Just tell us how many of you there are."
+            keywords: ['gruppe', 'zu zweit', 'zu dritt', 'zu viert', 'mehrere', 'klassenkamerad', 'freund', 'kollege', 'zusammen', 'group', 'together', 'friend', 'classmate'],
+            de: "Ja, Gruppenlektionen sind möglich, und es gibt keine Begrenzung bei der Gruppengrösse. Schreib bei der Anfrage einfach, wie viele ihr seid.",
+            en: "Yes, group lessons are possible, with no limit on group size. Just mention how many of you there are when you get in touch."
         },
         {
             id: 'materials',
-            keywords: ['unterlagen', 'material', 'aufgabe', 'uebung', 'skript', 'hausaufgabe', 'serie', 'schicken', 'senden', 'homework', 'documents', 'exercise', 'assignment', 'notes', 'send'],
+            keywords: ['unterlagen', 'material', 'aufgabe', 'uebung', 'skript', 'hausaufgabe', 'serie', 'homework', 'documents', 'exercise', 'assignment', 'notes'],
             de: "Schick deine Unterlagen (Skript, Übungsserien, alte Prüfungen) am besten vor der Lektion per E-Mail an mobin.tutors@gmail.com. So kann sich Mobin gezielt vorbereiten.",
             en: "Send your materials (lecture notes, problem sets, past exams) by email to mobin.tutors@gmail.com before the lesson so Mobin can prepare."
         },
         {
+            id: 'short_notice',
+            keywords: ['kurzfristig', 'dringend', 'sofort', 'schnell', 'asap', 'diese woche', 'naechste woche', 'last minute', 'notfall', 'urgent', 'short notice', 'this week', 'next week', 'quickly', 'soon'],
+            de: "Ob ein kurzfristiger Termin klappt, hängt davon ab, wie viele Schülerinnen und Schüler Mobin gerade betreut. Frag am besten so früh wie möglich an, dann wird geschaut, was möglich ist.",
+            en: "Whether a short-notice lesson works depends on how many students Mobin is currently teaching. Get in touch as early as possible and he'll see what he can do."
+        },
+        {
+            id: 'between_lessons',
+            keywords: ['zwischendurch', 'zwischen den lektionen', 'nach der lektion', 'fragen schicken', 'frage schicken', 'fragen stellen', 'kurze frage', 'nachfragen', 'between lessons', 'after the lesson', 'send questions', 'quick question', 'ask questions'],
+            de: "Ja, du darfst Mobin auch zwischen den Lektionen Fragen schicken.",
+            en: "Yes, you're welcome to send Mobin questions between lessons."
+        },
+        {
+            id: 'recording',
+            keywords: ['aufnehm', 'aufnahme', 'aufzeichn', 'filmen', 'mitschnitt', 'teilen', 'weitergeben', 'weiterleiten', 'record', 'recording', 'film', 'share', 'sharing', 'forward'],
+            de: "Ob eine Lektion aufgezeichnet werden darf, musst du Mobin direkt fragen, er entscheidet das selbst. Unterrichtsmaterialien dürfen in keinem Fall ohne vorherige Absprache mit anderen geteilt werden.",
+            en: "Whether a lesson may be recorded is something you need to ask Mobin directly. Lesson materials may never be shared with others without prior agreement."
+        },
+        {
+            id: 'receipt',
+            keywords: ['quittung', 'beleg', 'rechnung', 'bestaetigung', 'eltern', 'receipt', 'invoice', 'proof of payment', 'parents'],
+            de: "Ja, eine Quittung kannst du jederzeit verlangen.",
+            en: "Yes, you can request a receipt at any time."
+        },
+        {
             id: 'about', weight: 0.7,
             keywords: ['wer', 'mobin', 'ueber dich', 'ueber ihn', 'erfahrung', 'ausbildung', 'studium', 'qualifik', 'lebenslauf', 'hintergrund', 'who', 'about', 'experience', 'background', 'qualified', 'degree'],
-            de: "Mobin hat seinen Bachelor in Mathematik in Urmia mit einem Durchschnitt von 85 % abgeschlossen und galt als bester Student der Fakultät. Deshalb vertrat er sie an Mathematik-Olympiaden. Er arbeitete als Hilfsassistent in verschiedenen Mathekursen und unterrichtet inzwischen online, unter anderem ETH- und Doktoratsstudierende. Sein Ziel ist eine Mathematikprofessur, darum ist Unterrichten für ihn viel mehr als ein Nebenjob.",
-            en: "Mobin completed his Bachelor's in Mathematics in Urmia with an average of 85% and was considered the top student in the faculty, which is why he represented it at math olympiads. He worked as a teaching assistant in various math courses and now tutors online, including ETH and PhD students. He intends to become a math professor, so teaching is much more to him than a side job."
+            de: "Mobin hat seinen Bachelor in Mathematik in Urmia mit einem Durchschnitt von 85 % abgeschlossen und galt als bester Student der Fakultät. Deshalb vertrat er sie an Mathematik-Olympiaden. Er hat drei Jahre Unterrichtserfahrung, zuerst als Hilfsassistent in verschiedenen Mathekursen und inzwischen als Online-Tutor, unter anderem für ETH- und Doktoratsstudierende. Sein Ziel ist eine Mathematikprofessur, darum ist Unterrichten für ihn viel mehr als ein Nebenjob. Bisher haben alle seine Schülerinnen und Schüler ihre Matheprüfungen bestanden.",
+            en: "Mobin completed his Bachelor's in Mathematics in Urmia with an average of 85% and was considered the top student in the faculty, which is why he represented it at math olympiads. He has three years of teaching experience, first as a teaching assistant in various math courses and now as an online tutor, including ETH and PhD students. He intends to become a math professor, so teaching is much more to him than a side job. So far, all of his students have passed their math exams."
         },
         {
             id: 'contact', pausedNote: true,
