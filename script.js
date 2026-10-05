@@ -266,4 +266,451 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // =====================================================================
     //  RIPPLE-EFFEKT, SCROLL-ANIMATION, TELEFONNUMMER KOPIEREN (wie bisher)
-    // ================
+    // =====================================================================
+    const addRippleEffect = (event) => {
+        const button = event.currentTarget;
+        const rect = button.getBoundingClientRect();
+        const ripple = document.createElement('span');
+        ripple.classList.add('ripple');
+        ripple.style.left = `${event.clientX - rect.left}px`;
+        ripple.style.top = `${event.clientY - rect.top}px`;
+        button.appendChild(ripple);
+        setTimeout(() => ripple.remove(), 600);
+    };
+    document.querySelectorAll('.cta-button, nav a').forEach(el => el.addEventListener('click', addRippleEffect));
+
+    // Abschnitte einmalig sanft einblenden. Die Klasse "js-ready" sorgt dafür,
+    // dass Text nur versteckt wird, wenn dieses Script auch wirklich läuft.
+    const sections = document.querySelectorAll('.page-section');
+    if ('IntersectionObserver' in window) {
+        document.documentElement.classList.add('js-ready');
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0, rootMargin: '0px 0px -8% 0px' });
+        sections.forEach(section => observer.observe(section));
+    } else {
+        sections.forEach(section => section.classList.add('visible'));
+    }
+
+    const phoneNumberElement = document.getElementById('phone-number');
+    if (phoneNumberElement) {
+        phoneNumberElement.addEventListener('click', () => {
+            const phoneNumber = phoneNumberElement.textContent.trim();
+            navigator.clipboard.writeText(phoneNumber).then(() => {
+                const originalText = phoneNumberElement.textContent;
+                phoneNumberElement.textContent = translations[getLang()].copy_text;
+                setTimeout(() => { phoneNumberElement.textContent = originalText; }, 2000);
+            }).catch(err => console.error(translations[getLang()].copy_error, err));
+        });
+    }
+
+    // =====================================================================
+    //  CHATBOT – WISSENSBASIS
+    //  keywords: Wörter oder Phrasen (klein, Umlaute egal). Wortanfänge reichen,
+    //  z.B. "kost" passt auf "kostet", "kosten", "kostenlos".
+    //  pausedNote: true = bei pausiertem Betrieb den Hinweis anhängen.
+    //  weight: < 1 = schwächer (z.B. Begrüssung verliert gegen echte Fragen).
+    // =====================================================================
+    const intents = [
+        {
+            id: 'greeting', weight: 0.5,
+            keywords: ['hallo', 'hey', 'hi', 'hoi', 'gruezi', 'gruessech', 'salut', 'servus', 'moin', 'guten tag', 'guten morgen', 'guten abend', 'hello', 'good morning', 'good evening'],
+            de: "Hallo! Ich beantworte Fragen zu Preisen, Fächern, Zeiten, der Probestunde und mehr. Was möchtest du wissen?",
+            en: "Hello! I can answer questions about prices, subjects, times, the trial lesson and more. What would you like to know?"
+        },
+        {
+            id: 'status',
+            keywords: ['erreichbar', 'pause', 'ausser betrieb', 'geschlossen', 'wo ist mobin', 'geht es mobin', 'status', 'aktuell', 'momentan', 'unavailable', 'reachable', 'closed', 'where is mobin', 'is mobin ok'],
+            de: () => SETTINGS.paused
+                ? SETTINGS.pausedNote.de
+                : "Mobin ist aktuell erreichbar und nimmt gerne neue Schülerinnen und Schüler an.",
+            en: () => SETTINGS.paused
+                ? SETTINGS.pausedNote.en
+                : "Mobin is currently available and happy to take on new students."
+        },
+        {
+            id: 'price',
+            keywords: ['preis', 'kost', 'tarif', 'gebuehr', 'chf', 'franken', 'geld', 'teuer', 'guenstig', 'billig', 'wie viel', 'wieviel', 'price', 'cost', 'fee', 'rate', 'expensive', 'cheap', 'how much'],
+            de: "Die Probelektion kostet pauschal 15 CHF, egal wie lange sie dauert. Eine reguläre Lektion dauert 1 Stunde 20 Minuten und kostet 35 CHF.",
+            en: "The trial lesson costs a flat 15 CHF, no matter how long it takes. A regular lesson lasts 1 hour 20 minutes and costs 35 CHF."
+        },
+        {
+            id: 'payment',
+            keywords: ['bezahl', 'zahl', 'twint', 'bar', 'ueberweis', 'paypal', 'karte', 'pay', 'payment', 'card', 'cash'],
+            de: "Die Zahlungsart wird bei der Buchung direkt abgesprochen. Schreib einfach über das Kontaktformular, welche Variante dir am besten passt.",
+            en: "The payment method is agreed on directly when you book. Just mention your preferred option in the contact form."
+        },
+        {
+            id: 'trial', pausedNote: true,
+            keywords: ['probe', 'schnupper', 'kennenlern', 'erste stunde', 'erste lektion', 'gratis', 'kostenlos', 'trial', 'first lesson', 'test lesson', 'free lesson'],
+            de: "Die Probelektion kostet pauschal 15 CHF und hat keine feste Dauer – sie dauert so lange, wie du brauchst. Dabei lernt ihr euch kennen, Mobin schaut sich deinen Stoff an und ihr legt gemeinsam einen Plan fest. Anfragen kannst du sie über den Knopf «Probestunde anfragen» oder das Kontaktformular.",
+            en: "The trial lesson costs a flat 15 CHF and has no fixed length – it takes as long as you need. You get to know each other, Mobin looks at your material, and together you set a plan. You can request it with the «Request a trial lesson» button or the contact form."
+        },
+        {
+            id: 'subjects',
+            keywords: ['fach', 'faecher', 'thema', 'themen', 'mathe', 'algebra', 'lineare algebra', 'analysis', 'calculus', 'diskret', 'statistik', 'stochastik', 'wahrscheinlichkeit', 'geometrie', 'beweis', 'integral', 'ableitung', 'funktion', 'gleichung', 'matrix', 'subject', 'topic', 'math', 'linear', 'probability', 'statistics', 'proof', 'derivative', 'equation'],
+            de: "Mobin unterrichtet so ziemlich alle Bereiche der Mathematik, zum Beispiel Algebra, lineare Algebra, Analysis und diskrete Mathematik. Schick ihm am besten vorab deine Unterlagen, dann kann er sich optimal vorbereiten.",
+            en: "Mobin teaches almost every area of mathematics, for example algebra, linear algebra, calculus and discrete math. It's best to send your materials in advance so he can prepare properly."
+        },
+        {
+            id: 'other_subjects',
+            keywords: ['physik', 'chemie', 'biologie', 'informatik', 'programmier', 'wirtschaft', 'franzoesisch', 'physics', 'chemistry', 'biology', 'computer science', 'programming', 'coding', 'economics'],
+            de: "Der Schwerpunkt liegt klar auf Mathematik. Bei Fächern mit viel Mathe, etwa Physik oder Informatik-Theorie, lohnt sich eine kurze Anfrage über das Kontaktformular.",
+            en: "The focus is clearly on mathematics. For math-heavy subjects like physics or theoretical computer science, it's worth sending a quick request through the contact form."
+        },
+        {
+            id: 'gymnasium',
+            keywords: ['gymi', 'gymnasium', 'gymnasiast', 'kanti', 'kantonsschule', 'mittelschule', 'matura', 'maturitaet', 'maturaarbeit', 'aufnahmepruefung', 'gymipruefung', 'high school', 'secondary school', 'a level'],
+            de: "Ja, Mobin gibt auch Lektionen für Schülerinnen und Schüler am Gymnasium bzw. an der Kanti, zum Beispiel zur Vorbereitung auf Prüfungen oder die Matura. Der Unterricht findet allerdings nur auf Englisch statt.",
+            en: "Yes, Mobin also teaches high school students, for example to prepare for exams or the Matura. Lessons are held in English only."
+        },
+        {
+            id: 'level',
+            keywords: ['niveau', 'stufe', 'uni', 'universitaet', 'eth', 'epfl', 'fh', 'fachhochschule', 'hochschule', 'bachelor', 'master', 'phd', 'doktor', 'sek', 'oberstufe', 'primar', 'level', 'college', 'university', 'grade'],
+            de: "Mobin unterrichtet alle Stufen, von der Schule über Gymnasium/Kanti bis zu Fachhochschule, Universität und ETH. Einzige Voraussetzung: Der Unterricht findet auf Englisch statt, das sollte für dich also kein Problem sein. Mobin hat auch schon ETH- und Doktoratsstudierende begleitet.",
+            en: "Mobin teaches all levels, from school and high school to college, university and ETH. The only requirement is that lessons are in English, so that needs to work for you. Mobin has also tutored ETH and PhD students."
+        },
+        {
+            id: 'exam',
+            keywords: ['pruefung', 'basispruefung', 'klausur', 'test', 'vorbereit', 'lernplan', 'durchgefallen', 'nachpruefung', 'bestehen', 'bestanden', 'erfolg', 'note', 'noten', 'exam', 'midterm', 'final', 'prepare', 'preparation', 'failed', 'pass', 'grade', 'success'],
+            de: "Prüfungsvorbereitung ist ein Schwerpunkt. Mobin erstellt dir einen Lernplan, geht alte Prüfungen mit dir durch und übt gezielt deine Schwachstellen. Bisher haben alle seine Schülerinnen und Schüler ihre Matheprüfungen bestanden. Je früher du dich meldest, desto besser lässt sich planen.",
+            en: "Exam preparation is a key focus. Mobin creates a study plan, works through past exams with you and targets your weak spots. So far, all of his students have passed their math exams. The earlier you get in touch, the better you can plan."
+        },
+        {
+            id: 'times', pausedNote: true,
+            keywords: ['termin', 'zeit', 'wann', 'uhr', 'verfuegbar', 'wochenende', 'samstag', 'sonntag', 'abends', 'morgens', 'heute', 'uebermorgen', 'appointment', 'schedule', 'availab', 'when', 'weekend', 'evening', 'today', 'tomorrow'],
+            de: "Lektionen sind von Montag bis Sonntag zwischen 08:30 und 22:00 Uhr möglich, also auch am Wochenende und abends.",
+            en: "Lessons are possible Monday to Sunday between 08:30 and 22:00, including weekends and evenings."
+        },
+        {
+            id: 'booking', pausedNote: true,
+            keywords: ['buch', 'anmeld', 'reservier', 'anfangen', 'starten', 'beginnen', 'book', 'sign up', 'register', 'start', 'begin'],
+            de: "Buchen kannst du über das Kontaktformular oder den Knopf «Probestunde anfragen». Schreib kurz dein Fach, dein Niveau und wann du Zeit hast.",
+            en: "You can book through the contact form or the «Request a trial lesson» button. Briefly mention your subject, your level and when you're free."
+        },
+        {
+            id: 'duration',
+            keywords: ['dauer', 'wie lange', 'minuten', 'stunde lang', 'how long', 'duration', 'minutes', 'length'],
+            de: "Eine reguläre Lektion dauert 1 Stunde 20 Minuten (80 Minuten). Die Probelektion hat keine feste Dauer. Wenn du kürzere oder längere Einheiten brauchst, lässt sich das absprechen.",
+            en: "A regular lesson lasts 1 hour 20 minutes (80 minutes). The trial lesson has no fixed length. Shorter or longer sessions can be arranged."
+        },
+        {
+            id: 'online',
+            keywords: ['zoom', 'online', 'video', 'whiteboard', 'tablet', 'ipad', 'stift', 'laptop', 'kamera', 'mikrofon', 'technik', 'vor ort', 'persoenlich', 'praesenz', 'zuerich', 'stil', 'arbeitsweise', 'ablauf', 'wie laeuft', 'pen', 'camera', 'in person', 'how does it work', 'style'],
+            de: "Der Unterricht läuft online über Zoom mit dem integrierten Whiteboard. Ideal ist ein Tablet oder Grafikstift, damit du Aufgaben live mitlösen kannst, nötig ist das aber nicht. Zoom ist gratis und funktioniert auch im Browser. Falls Zoom für dich nicht geht, findet ihr eine andere Lösung.",
+            en: "Lessons take place online via Zoom using its built-in whiteboard. A tablet or graphics pen is ideal for solving exercises live, but not required. Zoom is free and also works in the browser. If Zoom doesn't work for you, you'll find another solution together."
+        },
+        {
+            id: 'language',
+            keywords: ['sprache', 'englisch', 'deutsch', 'sprichst du', 'language', 'english', 'german', 'speak'],
+            de: "Der Unterricht findet auf Englisch statt. Fachbegriffe kann Mobin dir bei Bedarf auch auf Deutsch zuordnen.",
+            en: "Lessons are held in English."
+        },
+        {
+            id: 'cancel', pausedNote: true,
+            keywords: ['absag', 'verschieb', 'stornier', 'krank', 'ausfallen', 'cancel', 'reschedule', 'sick', 'postpone'],
+            de: "Wenn du eine Lektion absagen oder verschieben musst, gib bitte so früh wie möglich Bescheid. Die Details besprecht ihr bei der Buchung.",
+            en: "If you need to cancel or move a lesson, please let us know as early as possible. Details are agreed on when you book."
+        },
+        {
+            id: 'group',
+            keywords: ['gruppe', 'zu zweit', 'zu dritt', 'zu viert', 'mehrere', 'klassenkamerad', 'freund', 'kollege', 'zusammen', 'group', 'together', 'friend', 'classmate'],
+            de: "Ja, Gruppenlektionen sind möglich, und es gibt keine Begrenzung bei der Gruppengrösse. Schreib bei der Anfrage einfach, wie viele ihr seid.",
+            en: "Yes, group lessons are possible, with no limit on group size. Just mention how many of you there are when you get in touch."
+        },
+        {
+            id: 'materials',
+            keywords: ['unterlagen', 'material', 'aufgabe', 'uebung', 'skript', 'hausaufgabe', 'serie', 'homework', 'documents', 'exercise', 'assignment', 'notes'],
+            de: "Schick deine Unterlagen (Skript, Übungsserien, alte Prüfungen) am besten vor der Lektion per E-Mail an mobin.tutors@gmail.com. So kann sich Mobin gezielt vorbereiten.",
+            en: "Send your materials (lecture notes, problem sets, past exams) by email to mobin.tutors@gmail.com before the lesson so Mobin can prepare."
+        },
+        {
+            id: 'short_notice',
+            keywords: ['kurzfristig', 'dringend', 'sofort', 'schnell', 'asap', 'diese woche', 'naechste woche', 'last minute', 'notfall', 'urgent', 'short notice', 'this week', 'next week', 'quickly', 'soon'],
+            de: "Ob ein kurzfristiger Termin klappt, hängt davon ab, wie viele Schülerinnen und Schüler Mobin gerade betreut. Frag am besten so früh wie möglich an, dann wird geschaut, was möglich ist.",
+            en: "Whether a short-notice lesson works depends on how many students Mobin is currently teaching. Get in touch as early as possible and he'll see what he can do."
+        },
+        {
+            id: 'between_lessons',
+            keywords: ['zwischendurch', 'zwischen den lektionen', 'nach der lektion', 'fragen schicken', 'frage schicken', 'fragen stellen', 'kurze frage', 'nachfragen', 'between lessons', 'after the lesson', 'send questions', 'quick question', 'ask questions'],
+            de: "Ja, du darfst Mobin auch zwischen den Lektionen Fragen schicken.",
+            en: "Yes, you're welcome to send Mobin questions between lessons."
+        },
+        {
+            id: 'recording',
+            keywords: ['aufnehm', 'aufnahme', 'aufzeichn', 'filmen', 'mitschnitt', 'teilen', 'weitergeben', 'weiterleiten', 'record', 'recording', 'film', 'share', 'sharing', 'forward'],
+            de: "Ob eine Lektion aufgezeichnet werden darf, musst du Mobin direkt fragen, er entscheidet das selbst. Unterrichtsmaterialien dürfen in keinem Fall ohne vorherige Absprache mit anderen geteilt werden.",
+            en: "Whether a lesson may be recorded is something you need to ask Mobin directly. Lesson materials may never be shared with others without prior agreement."
+        },
+        {
+            id: 'receipt',
+            keywords: ['quittung', 'beleg', 'rechnung', 'bestaetigung', 'eltern', 'receipt', 'invoice', 'proof of payment', 'parents'],
+            de: "Ja, eine Quittung kannst du jederzeit verlangen.",
+            en: "Yes, you can request a receipt at any time."
+        },
+        {
+            id: 'about', weight: 0.7,
+            keywords: ['wer', 'mobin', 'ueber dich', 'ueber ihn', 'erfahrung', 'ausbildung', 'studium', 'qualifik', 'lebenslauf', 'hintergrund', 'who', 'about', 'experience', 'background', 'qualified', 'degree'],
+            de: "Mobin hat seinen Bachelor in Mathematik in Urmia mit einem Durchschnitt von 85 % abgeschlossen und galt als bester Student der Fakultät. Deshalb vertrat er sie an Mathematik-Olympiaden. Er hat drei Jahre Unterrichtserfahrung, zuerst als Hilfsassistent in verschiedenen Mathekursen und inzwischen als Online-Tutor, unter anderem für ETH- und Doktoratsstudierende. Sein Ziel ist eine Mathematikprofessur, darum ist Unterrichten für ihn viel mehr als ein Nebenjob. Bisher haben alle seine Schülerinnen und Schüler ihre Matheprüfungen bestanden.",
+            en: "Mobin completed his Bachelor's in Mathematics in Urmia with an average of 85% and was considered the top student in the faculty, which is why he represented it at math olympiads. He has three years of teaching experience, first as a teaching assistant in various math courses and now as an online tutor, including ETH and PhD students. He intends to become a math professor, so teaching is much more to him than a side job. So far, all of his students have passed their math exams."
+        },
+        {
+            id: 'contact', pausedNote: true,
+            keywords: ['kontakt', 'email', 'mail', 'telefon', 'nummer', 'whatsapp', 'anruf', 'erreichen', 'schreiben', 'contact', 'phone', 'call', 'reach', 'number'],
+            de: "Du erreichst uns am einfachsten über das Kontaktformular auf dieser Seite oder per E-Mail an mobin.tutors@gmail.com.",
+            en: "The easiest way to reach us is the contact form on this page or by email at mobin.tutors@gmail.com."
+        },
+        {
+            id: 'bot',
+            keywords: ['bist du ein bot', 'bist du echt', 'mensch', 'roboter', 'ki', 'chatgpt', 'are you a bot', 'are you human', 'robot', 'ai'],
+            de: "Ich bin ein einfacher Info-Bot und kenne die wichtigsten Fakten zum Unterricht. Für alles Persönliche nutze bitte das Kontaktformular.",
+            en: "I'm a simple info bot that knows the key facts about the lessons. For anything personal, please use the contact form."
+        },
+        {
+            id: 'help',
+            keywords: ['hilfe', 'was kannst du', 'optionen', 'menu', 'help', 'what can you do', 'options'],
+            de: "Frag mich zum Beispiel nach Preisen, Fächern, Niveau, Zeiten, der Probestunde, dem Ablauf über Zoom oder nach Mobin selbst.",
+            en: "Ask me about prices, subjects, level, times, the trial lesson, how Zoom lessons work, or about Mobin himself."
+        },
+        {
+            id: 'thanks', weight: 0.6,
+            keywords: ['danke', 'merci', 'super', 'perfekt', 'toll', 'thanks', 'thank you', 'great', 'perfect', 'cool'],
+            de: "Gern geschehen! Wenn du noch etwas wissen möchtest, frag einfach.",
+            en: "You're welcome! Just ask if there's anything else."
+        },
+        {
+            id: 'bye', weight: 0.6,
+            keywords: ['tschuess', 'ciao', 'adieu', 'auf wiedersehen', 'bis bald', 'bye', 'goodbye', 'see you'],
+            de: "Tschüss und viel Erfolg beim Lernen!",
+            en: "Bye, and good luck with your studies!"
+        }
+    ];
+
+    const fallback = {
+        de: "Dazu habe ich leider keine Antwort. Probier es mit einem der Themen unten oder schreib deine Frage über das Kontaktformular, dann meldet sich jemand persönlich.",
+        en: "I don't have an answer for that. Try one of the topics below, or send your question through the contact form and someone will get back to you personally."
+    };
+
+    // Schnellantwort-Knöpfe (Text, der beim Klick gesendet wird)
+    const quickReplies = {
+        de: ['Preise', 'Fächer', 'Probestunde', 'Zeiten', 'Ablauf', 'Über Mobin'],
+        en: ['Prices', 'Subjects', 'Trial lesson', 'Times', 'How it works', 'About Mobin']
+    };
+
+    // =====================================================================
+    //  CHATBOT – ERKENNUNG
+    // =====================================================================
+
+    // Kleinschreibung, Umlaute vereinheitlichen, Satzzeichen entfernen
+    const normalize = (text) => text
+        .toLowerCase()
+        .replace(/ä/g, 'ae').replace(/ö/g, 'oe').replace(/ü/g, 'ue').replace(/ß/g, 'ss')
+        .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+        .replace(/[^a-z0-9\s]/g, ' ')
+        .replace(/\s+/g, ' ')
+        .trim();
+
+    // Anzahl Tippfehler zwischen zwei Wörtern (Levenshtein-Distanz)
+    const editDistance = (a, b) => {
+        if (Math.abs(a.length - b.length) > 2) return 99;
+        const row = Array.from({ length: b.length + 1 }, (_, i) => i);
+        for (let i = 1; i <= a.length; i++) {
+            let prev = row[0];
+            row[0] = i;
+            for (let j = 1; j <= b.length; j++) {
+                const temp = row[j];
+                row[j] = Math.min(row[j] + 1, row[j - 1] + 1, prev + (a[i - 1] === b[j - 1] ? 0 : 1));
+                prev = temp;
+            }
+        }
+        return row[b.length];
+    };
+
+    // Wie gut passt ein Keyword zur Nachricht? 0 = gar nicht
+    const matchKeyword = (keyword, padded, tokens) => {
+        if (keyword.includes(' ')) {
+            return padded.includes(` ${keyword} `) ? 3 : 0;   // ganze Phrase
+        }
+        let best = 0;
+        for (const token of tokens) {
+            if (token === keyword) return 2;                     // exaktes Wort
+            if (keyword.length >= 4 && token.startsWith(keyword)) best = Math.max(best, 1.5); // Wortanfang
+            const allowed = keyword.length >= 9 ? 2 : keyword.length >= 5 ? 1 : 0;      // Tippfehler
+            if (allowed && editDistance(token, keyword) <= allowed) best = Math.max(best, 1);
+        }
+        return best;
+    };
+
+    // Keywords einmalig vorbereiten
+    intents.forEach(intent => { intent.normKeywords = intent.keywords.map(normalize); });
+
+    const findIntents = (message) => {
+        const norm = normalize(message);
+        const tokens = norm.split(' ').filter(Boolean);
+        const padded = ` ${norm} `;
+        const scored = intents.map(intent => {
+            const score = intent.normKeywords.reduce((sum, kw) => sum + matchKeyword(kw, padded, tokens), 0);
+            return { intent, score: score * (intent.weight || 1) };
+        }).filter(r => r.score > 0).sort((a, b) => b.score - a.score);
+
+        if (scored.length === 0) return [];
+        // Begrüssung/Danke nur, wenn sonst nichts Inhaltliches gefragt wurde
+        const smallTalk = ['greeting', 'thanks', 'bye'];
+        const real = scored.filter(r => !smallTalk.includes(r.intent.id));
+        if (real.length === 0) return [scored[0].intent];
+        // Bis zu zwei Themen beantworten, z.B. "Was kostet es und wann geht es?"
+        const result = [real[0].intent];
+        if (real[1] && real[1].score >= 1.5) result.push(real[1].intent);
+        return result;
+    };
+
+    const buildAnswer = (message, lang) => {
+        const found = findIntents(message);
+        if (found.length === 0) return { text: fallback[lang], isFallback: true };
+        const parts = found.map(intent => {
+            const answer = intent[lang] || intent.de;
+            return typeof answer === 'function' ? answer() : answer;
+        });
+        const needsNote = SETTINGS.paused && found.some(i => i.pausedNote);
+        if (needsNote) parts.push(SETTINGS.pausedNote[lang]);
+        return { text: parts.join('\n\n'), isFallback: false };
+    };
+
+    // =====================================================================
+    //  CHATBOT – OBERFLÄCHE
+    // =====================================================================
+    const chatbotIcon = document.getElementById('chatbot-icon');
+    const chatbotWindow = document.getElementById('chatbot-window');
+    const closeBtn = document.getElementById('close-btn');
+    const messagesContainer = document.getElementById('chatbot-messages');
+    const userInput = document.getElementById('user-input');
+    const sendBtn = document.getElementById('send-btn');
+
+    if (!chatbotIcon || !chatbotWindow || !messagesContainer || !userInput || !sendBtn) return;
+
+    // Kleine Zusatz-Styles, damit du die CSS-Datei nicht anpassen musst
+    const style = document.createElement('style');
+    style.textContent = `
+        #chatbot-messages .bot-message { white-space: pre-line; }
+        .mt-quick-replies { display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0; }
+        .mt-quick-replies button {
+            font: inherit; font-size: 0.85em; padding: 5px 11px; cursor: pointer;
+            border: 1px solid currentColor; border-radius: 999px;
+            background: transparent; color: inherit; opacity: 0.85;
+        }
+        .mt-quick-replies button:hover, .mt-quick-replies button:focus-visible { opacity: 1; outline: 2px solid currentColor; outline-offset: 1px; }
+    `;
+    document.head.appendChild(style);
+
+    let fallbackCount = 0;
+
+    const addMessage = (text, sender) => {
+        const div = document.createElement('div');
+        div.classList.add('message', sender === 'user' ? 'user-message' : 'bot-message');
+        div.textContent = text; // textContent schützt vor eingeschleustem HTML
+        messagesContainer.appendChild(div);
+        messagesContainer.scrollTop = messagesContainer.scrollHeight;
+    };
+
+    function renderQuickReplies() {
+        if (!messagesContainer) return;
+        messagesContainer.querySelectorAll('.mt-quick-replies').forEach(el => el.remove());
+        const wrap = document.createElement('div');
+        wrap.className = 'mt-quick-replies';
+        quickReplies[getLang()].forEach(label => {
+            const btn = document.createElement('button');
+            btn.type = 'button';
+            btn.textContent = label;
+            btn.addEventListener('click', () => sendMessage(label));
+            wrap.appendChild(btn);
+        });
+        messagesContainer.appendChild(wrap);
+        messagesContainer.scrollTop = messagesContainer.scrollHeight;
+    }
+
+    const sendMessage = (presetText) => {
+        const raw = (typeof presetText === 'string' ? presetText : userInput.value).trim();
+        if (raw === '') return;
+        userInput.value = '';
+
+        messagesContainer.querySelectorAll('.mt-quick-replies').forEach(el => el.remove());
+        addMessage(raw, 'user');
+
+        setTimeout(() => {
+            const lang = getLang();
+            const { text, isFallback } = buildAnswer(raw, lang);
+            fallbackCount = isFallback ? fallbackCount + 1 : 0;
+            addMessage(text, 'bot');
+            // Bei Unklarheiten Themen-Knöpfe zeigen
+            if (isFallback) renderQuickReplies();
+        }, SETTINGS.replyDelay);
+    };
+
+    // ----- Blinzeln -----
+    // Hat das Symbol Augen mit der Klasse "eye", blinzeln nur diese.
+    // Sonst blinzelt das ganze Symbol mit einem kurzen Zusammenziehen.
+    const blinkStyle = document.createElement('style');
+    blinkStyle.textContent = `
+        @keyframes mt-blink-eye  { 0%, 100% { transform: scaleY(1); } 50% { transform: scaleY(0.1); } }
+        @keyframes mt-blink-icon { 0%, 100% { transform: scaleY(1); } 50% { transform: scaleY(0.82); } }
+        #chatbot-icon .eye { transform-box: fill-box; transform-origin: center; }
+        #chatbot-icon.mt-blink .eye { animation: mt-blink-eye 0.16s ease-in-out; }
+        #chatbot-icon.mt-blink.mt-no-eyes { animation: mt-blink-icon 0.16s ease-in-out; }
+        @media (prefers-reduced-motion: reduce) {
+            #chatbot-icon.mt-blink .eye, #chatbot-icon.mt-blink.mt-no-eyes { animation: none; }
+        }
+    `;
+    document.head.appendChild(blinkStyle);
+
+    const blinkOnce = () => new Promise(resolve => {
+        chatbotIcon.classList.toggle('mt-no-eyes', !chatbotIcon.querySelector('.eye'));
+        chatbotIcon.classList.remove('mt-blink');
+        void chatbotIcon.offsetWidth; // Animation neu starten
+        chatbotIcon.classList.add('mt-blink');
+        setTimeout(() => { chatbotIcon.classList.remove('mt-blink'); resolve(); }, 180);
+    });
+
+    const scheduleBlink = () => {
+        const [min, max] = SETTINGS.blinkEvery;
+        const wait = (min + Math.random() * (max - min)) * 1000;
+        setTimeout(async () => {
+            // Nicht blinzeln, solange das Chatfenster offen ist
+            if (!chatbotWindow.classList.contains('visible')) {
+                await blinkOnce();
+                if (Math.random() < 0.25) { // manchmal doppelt blinzeln
+                    await new Promise(r => setTimeout(r, 120));
+                    await blinkOnce();
+                }
+            }
+            scheduleBlink();
+        }, wait);
+    };
+    if (SETTINGS.blink) scheduleBlink();
+
+    let opened = false;
+    chatbotIcon.addEventListener('click', () => {
+        chatbotWindow.classList.toggle('visible');
+        if (!opened && chatbotWindow.classList.contains('visible')) {
+            opened = true;
+            renderQuickReplies();
+            setTimeout(() => userInput.focus(), 100);
+        }
+    });
+    chatbotIcon.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); chatbotIcon.click(); }
+    });
+    if (closeBtn) closeBtn.addEventListener('click', () => chatbotWindow.classList.remove('visible'));
+
+    sendBtn.addEventListener('click', () => sendMessage());
+    userInput.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter' && !event.isComposing) {
+            event.preventDefault();
+            sendMessage();
+        }
+    });
+});
