@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title data-key="title">Mobintutors - Dein Nachhilfelehrer</title>
+    <meta name="description" content="Online-Mathenachhilfe über Zoom für alle Stufen – von der Kanti bis zur ETH. Probelektion für 15 CHF.">
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -13,30 +14,30 @@
     <header>
         <nav>
             <a href="#" class="logo" data-key="logo">Mobin.tutors!</a>
-         <div class="nav-links">
-             <a href="#about" data-key="nav_about">Über mich</a>
-             <a href="#contact" data-key="nav_contact">Kontakt & Buchen</a>
-             <a href="#imprint" data-key="nav_imprint">Impressum</a>
-         </div>
-         <div class="language-switcher-container">
-             <select id="language-switcher">
-               <option value="de">DE</option>
-               <option value="en">EN</option>
-            </select>
-            <i class="fas fa-globe"></i>
-         </div>
+            <div class="nav-links">
+                <a href="#about" data-key="nav_about">Über mich</a>
+                <a href="#contact" data-key="nav_contact">Kontakt & Buchen</a>
+                <a href="#imprint" data-key="nav_imprint">Impressum</a>
+            </div>
+            <div class="language-switcher-container">
+                <select id="language-switcher" aria-label="Sprache wählen">
+                    <option value="de">DE</option>
+                    <option value="en">EN</option>
+                </select>
+                <i class="fas fa-globe"></i>
+            </div>
         </nav>
     </header>
 
     <main>
         <section id="home" class="hero">
             <div class="hero-content">
-                <h1 data-key="hero_title">Moment ausser betrieb <3</h1>
+                <h1 data-key="hero_title">Lernen leicht gemacht.</h1>
                 <p data-key="hero_subtitle">Professionelle Nachhilfe, die dich wirklich weiterbringt.</p>
                 <a href="#contact" class="cta-button" data-key="cta_home">Jetzt buchen!</a>
             </div>
-             <div class="hero-image">
-                <h1 class="handwriting-effect" data-text="Online Tutoring"></h1> 
+            <div class="hero-image">
+                <h1 class="handwriting-effect" data-text="Online Tutoring"></h1>
             </div>
         </section>
 
@@ -46,17 +47,12 @@
                 <div class="about-content">
                     <div class="about-text">
                         <h3 data-key="about_name">Hallo, ich bin Mobin</h3>
-                         <p data-key="about_text1">Liebe Schüler, aufgrund der aktuellen Lage im Land ist Mobin leider nicht erreichbar. Er hat sich vor Beginn der Eskalation noch bei mir gemeldet & es war alles in Ordnung.
-Diejenigen unter euch die meine Nummer noch nicht haben senden am besten ein Kontaktformular auf dieser Webseite an mich, damit ich meine Kontaktdaten weitergeben kann.
-Ich wünsche euch allen ganz viel Erfolg in der weiteren Prüfungsvorbereitung und glaube an euch. Ruhe bewahren, Ablenkungen ausschalten und weiter machen und nicht zweifeln.
-
-Liebe Grüße 
-Rahel </p>
-                        <p data-key="about_text2"> </p>
-                        <p data-key="about_text3">Hier kommt dein neuer Text rein, den du auf Deutsch verfassen kannst.</p>
+                        <p data-key="about_text1">Ich bin ein leidenschaftlicher Nachhilfelehrer mit drei Jahren Erfahrung in der Vermittlung verschiedener Mathematikfächer. Bisher haben alle meine Schülerinnen und Schüler ihre Matheprüfungen erfolgreich bestanden.</p>
+                        <p data-key="about_text2">In meinen Stunden gehe ich auf deine individuellen Bedürfnisse ein und erstelle massgeschneiderte Lernpläne.</p>
+                        <p data-key="about_text3">Der Unterricht findet auf Englisch über Zoom statt und kann von Montag bis Sonntag zwischen 08:30 und 22:00 Uhr gebucht werden.</p>
                     </div>
                     <div class="about-image">
-                        <img src="mobinpicture.png" alt="Ein Bild von dir">
+                        <img src="mobinpicture.png" alt="Mobin, Mathematik-Nachhilfelehrer">
                     </div>
                 </div>
             </div>
@@ -65,12 +61,12 @@ Rahel </p>
         <section id="contact" class="page-section contact-section">
             <div class="container">
                 <h2 data-key="contact_title">Kontakt & Buchen</h2>
-                <p data-key="contact_subtitle">Hier findest du das Kontaktformular(feld mit Eingabemöglichkeit) um dich bei mir (Rahel) zu melden </p>
+                <p data-key="contact_subtitle">Bereit für den nächsten Schritt? Nimm Kontakt auf oder buche direkt eine Probestunde.</p>
                 <div class="contact-grid">
                     <div class="contact-info">
                         <h3 data-key="contact_info_title">Kontaktinformationen</h3>
                         <p><i class="fas fa-phone-alt icon"></i> <span id="phone-number" class="clickable-phone-number">+989353821319</span></p>
-                        <p><i class="fab fa-whatsapp icon"></i> <a href="https://wa.link/70p27b" target="_blank" data-key="contact_info_link">WhatsApp Nachricht senden</a></p>
+                        <p><i class="fab fa-whatsapp icon"></i> <a href="https://wa.link/70p27b" target="_blank" rel="noopener" data-key="contact_info_link">WhatsApp-Nachricht senden</a></p>
                         <p><i class="fas fa-envelope icon"></i> <a href="mailto:mobin.tutors@gmail.com">mobin.tutors@gmail.com</a></p>
                         <p><i class="fas fa-map-marker-alt icon"></i> Zoom</p>
                         <a href="mailto:mobin.tutors@gmail.com" class="cta-button" data-key="cta_contact">Probestunde anfragen</a>
@@ -78,9 +74,9 @@ Rahel </p>
                     <div class="contact-form-container">
                         <h3 data-key="contact_form_title">Direkt eine Nachricht senden</h3>
                         <form action="https://formspree.io/f/xblaqjjy" method="post" class="contact-form">
-                            <input type="text" name="name" data-key="form_name_placeholder" placeholder="Dein Name" required>
-                            <input type="email" name="email" data-key="form_email_placeholder" placeholder="Deine E-Mail-Adresse" required>
-                            <textarea name="message" rows="5" data-key="form_message_placeholder" placeholder="Deine Nachricht" required></textarea>
+                            <input type="text" name="name" data-key="form_name_placeholder" placeholder="Dein Name" aria-label="Name" required>
+                            <input type="email" name="email" data-key="form_email_placeholder" placeholder="Deine E-Mail-Adresse" aria-label="E-Mail" required>
+                            <textarea name="message" rows="5" data-key="form_message_placeholder" placeholder="Deine Nachricht" aria-label="Nachricht" required></textarea>
                             <button type="submit" class="cta-button" data-key="form_send_button">Senden</button>
                         </form>
                     </div>
@@ -94,53 +90,55 @@ Rahel </p>
                 <div class="imprint-content">
                     <p data-key="imprint_content1">
                         Mobin Ekthiari<br>
-                        Peter-debye-we]<br>
+                        Peter-Debye-Weg<br>
                         8045 Zürich<br><br>
                         <strong>Kontakt:</strong><br>
                         Telefon: 0778146402<br>
                         E-Mail: mobin.tutors@gmail.com
                     </p>
                     <p data-key="imprint_content2">
-                        <strong>Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV:</strong><br>
-                        Mobin<br>
-                        Peter-debye-weg
+                        <strong>Verantwortlich für den Inhalt:</strong><br>
+                        Mobin Ekthiari
                     </p>
                 </div>
             </div>
         </section>
-        
+
         <div id="chatbot-container">
-            <div id="chatbot-icon">
-                <i class="fas fa-robot"></i>
+            <div id="chatbot-icon" role="button" tabindex="0" aria-label="Chat öffnen">
+                <!-- Bot-Gesicht: die Elemente mit class="eye" blinzeln (gesteuert in script.js) -->
+                <svg class="bot-face" viewBox="0 0 64 64" width="1.6em" height="1.6em" aria-hidden="true"
+                     fill="none" stroke="currentColor" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="32" y1="8" x2="32" y2="15"/>
+                    <circle cx="32" cy="6" r="3" fill="currentColor" stroke="none"/>
+                    <rect x="11" y="15" width="42" height="36" rx="11"/>
+                    <line x1="5" y1="29" x2="5" y2="37"/>
+                    <line x1="59" y1="29" x2="59" y2="37"/>
+                    <ellipse class="eye" cx="24" cy="31" rx="4.5" ry="5.5" fill="currentColor" stroke="none"/>
+                    <ellipse class="eye" cx="40" cy="31" rx="4.5" ry="5.5" fill="currentColor" stroke="none"/>
+                    <path d="M25 42 q7 5 14 0"/>
+                </svg>
             </div>
             <div id="chatbot-window">
                 <div id="chatbot-header">
                     <h3 data-key="chatbot_title">Fragen an den Nachhilfe-Bot</h3>
-                    <span id="close-btn">&times;</span>
+                    <span id="close-btn" role="button" aria-label="Chat schliessen">&times;</span>
                 </div>
                 <div id="chatbot-messages">
-                    <div class="message bot-message" data-key="chatbot_intro">Hast du fragen über den Unterricht, Kosten, zeitliche Verfügbarkeit oder ähnliches? Dann frag mich gerne!</div>
+                    <div class="message bot-message" data-key="chatbot_intro">Hast du Fragen zum Unterricht, zu den Kosten oder zu freien Zeiten? Frag mich einfach!</div>
                 </div>
                 <div id="chatbot-input">
-                    <input type="text" id="user-input" data-key="chatbot_placeholder" placeholder="Nachricht eingeben...">
-                    <button id="send-btn"><i class="fas fa-paper-plane"></i></button>
+                    <input type="text" id="user-input" data-key="chatbot_placeholder" placeholder="Nachricht eingeben..." aria-label="Nachricht an den Bot">
+                    <button id="send-btn" aria-label="Senden"><i class="fas fa-paper-plane"></i></button>
                 </div>
             </div>
         </div>
     </main>
 
     <footer>
-        <p data-key="footer_text">&copy; 2024 Mobintutors. Alle Rechte vorbehalten.</p>
+        <p data-key="footer_text">&copy; 2025 Mobintutors. Alle Rechte vorbehalten.</p>
     </footer>
 
     <script src="script.js"></script>
 </body>
 </html>
-
-
-
-
-
-
-
-
