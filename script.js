@@ -45,8 +45,8 @@ document.addEventListener('DOMContentLoaded', () => {
             nav_about: "Über mich",
             nav_contact: "Kontakt & Buchen",
             nav_imprint: "Impressum",
-            hero_title: "Mathe-Nachhilfe online – von der Kanti bis zur ETH",
-            hero_subtitle: "Professionelle Nachhilfe, die dich wirklich weiterbringt.",
+            hero_title: "Mathenachhilfe online",
+            hero_subtitle: "Von der Kanti bis zur ETH. Professionelle Nachhilfe, die dich wirklich weiterbringt.",
             cta_home: "Jetzt buchen!",
             about_title: "Über mich",
             about_name: "Hallo, ich bin Mobin",
@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
             imprint_title: "Impressum",
             imprint_content1: "Mobin Ekthiari<br>Peter-Debye-Weg<br>8045 Zürich<br><br><strong>Kontakt:</strong><br>Telefon: 0778146402<br>E-Mail: mobin.tutors@gmail.com",
             imprint_content2: "<strong>Verantwortlich für den Inhalt:</strong><br>Mobin Ekthiari",
-            title: "Mathe-Nachhilfe online – Kanti bis ETH | Mobintutors",
+            title: "Mathenachhilfe online von der Kanti bis zur ETH | Mobintutors",
             nav_prices: "Preise",
             nav_faq: "FAQ",
             hero_fact1: "Auf Englisch",
@@ -106,13 +106,9 @@ document.addEventListener('DOMContentLoaded', () => {
             footer_imprint: "Impressum",
             footer_privacy: "Datenschutz",
             privacy_title: "Datenschutzerklärung",
-            privacy_content: "<h3>Verantwortlich</h3><p>Mobin Ekthiari, Peter-Debye-Weg, 8045 Zürich, mobin.tutors@gmail.com</p>"
-                + "<h3>Kontaktformular</h3><p>Wenn du das Kontaktformular nutzt, werden Name, E-Mail-Adresse und Nachricht über den Dienst Formspree (Formspree Inc., USA) an uns übermittelt. Wir verwenden diese Angaben nur, um deine Anfrage zu beantworten und den Unterricht zu organisieren.</p>"
-                + "<h3>E-Mail, WhatsApp und Zoom</h3><p>Wenn du uns per E-Mail (Google Gmail) oder WhatsApp (Meta) schreibst oder am Unterricht über Zoom (Zoom Video Communications, USA) teilnimmst, werden deine Daten auch von diesen Anbietern verarbeitet. Es gelten zusätzlich deren Datenschutzbestimmungen.</p>"
-                + "<h3>Schriften und Symbole</h3><p>Diese Seite lädt Schriften von Google Fonts (Google) und Symbole über cdnjs (Cloudflare). Dabei wird deine IP-Adresse an diese Anbieter übertragen.</p>"
-                + "<h3>Hosting</h3><p>Beim Aufruf der Seite speichert der Webhoster technisch notwendige Daten wie IP-Adresse, Zeitpunkt und Browsertyp in Server-Protokollen.</p>"
-                + "<h3>Cookies und Tracking</h3><p>Diese Seite setzt keine eigenen Cookies und verwendet keine Analyse- oder Werbe-Tools.</p>"
-                + "<h3>Deine Rechte</h3><p>Du kannst jederzeit Auskunft über deine gespeicherten Daten verlangen sowie deren Berichtigung oder Löschung. Schreib dazu an mobin.tutors@gmail.com. Wir löschen deine Daten, sobald sie nicht mehr benötigt werden.</p>"
+            privacy_content: "<p><strong>Verantwortlich:</strong> Mobin Ekthiari, Peter-Debye-Weg, 8045 Zürich, mobin.tutors@gmail.com</p>"
+                + "<p>Wir bearbeiten deine Daten (z. B. Name, E-Mail-Adresse und Nachricht) nur, um deine Anfrage zu beantworten und den Unterricht zu organisieren. Dafür setzen wir externe Dienstleister für Formularversand, Kommunikation, Videounterricht und Webhosting ein. Diese können Daten auch im Ausland verarbeiten, insbesondere in den USA. Beim Besuch der Seite werden technisch notwendige Daten wie die IP-Adresse verarbeitet.</p>"
+                + "<p>Diese Seite setzt keine eigenen Cookies und verwendet keine Analyse-Tools. Du kannst jederzeit Auskunft, Berichtigung oder Löschung deiner Daten verlangen: mobin.tutors@gmail.com</p>"
                 + "<p><em>Stand: Oktober 2026</em></p>",
             footer_text: "&copy; 2026 Mobintutors. Alle Rechte vorbehalten.",
             chatbot_title: "Fragen an den Nachhilfe-Bot",
@@ -126,8 +122,8 @@ document.addEventListener('DOMContentLoaded', () => {
             nav_about: "About Me",
             nav_contact: "Contact & Booking",
             nav_imprint: "Imprint",
-            hero_title: "Online math tutoring – from high school to ETH",
-            hero_subtitle: "Professional math tutoring that helps you succeed.",
+            hero_title: "Online math tutoring",
+            hero_subtitle: "From high school to ETH. Professional tutoring that really moves you forward.",
             cta_home: "Book now!",
             about_title: "About Me",
             about_name: "Hi, I'm Mobin",
@@ -147,7 +143,7 @@ document.addEventListener('DOMContentLoaded', () => {
             imprint_title: "Imprint",
             imprint_content1: "Mobin Ekthiari<br>Peter-Debye-Weg<br>8045 Zürich<br><br><strong>Contact:</strong><br>Phone: 0778146402<br>Email: mobin.tutors@gmail.com",
             imprint_content2: "<strong>Responsible for the content:</strong><br>Mobin Ekthiari",
-            title: "Online Math Tutoring – High School to ETH | Mobintutors",
+            title: "Online Math Tutoring from High School to ETH | Mobintutors",
             nav_prices: "Prices",
             nav_faq: "FAQ",
             hero_fact1: "In English",
@@ -187,13 +183,9 @@ document.addEventListener('DOMContentLoaded', () => {
             footer_imprint: "Imprint",
             footer_privacy: "Privacy",
             privacy_title: "Privacy policy",
-            privacy_content: "<h3>Controller</h3><p>Mobin Ekthiari, Peter-Debye-Weg, 8045 Zürich, Switzerland, mobin.tutors@gmail.com</p>"
-                + "<h3>Contact form</h3><p>When you use the contact form, your name, email address and message are sent to us via Formspree (Formspree Inc., USA). We only use this information to answer your request and organise lessons.</p>"
-                + "<h3>Email, WhatsApp and Zoom</h3><p>If you contact us by email (Google Gmail) or WhatsApp (Meta), or take part in lessons over Zoom (Zoom Video Communications, USA), your data is also processed by these providers under their own privacy policies.</p>"
-                + "<h3>Fonts and icons</h3><p>This site loads fonts from Google Fonts (Google) and icons via cdnjs (Cloudflare). Your IP address is transmitted to these providers in the process.</p>"
-                + "<h3>Hosting</h3><p>When you visit the site, the web host stores technically necessary data such as IP address, time and browser type in server logs.</p>"
-                + "<h3>Cookies and tracking</h3><p>This site sets no cookies of its own and uses no analytics or advertising tools.</p>"
-                + "<h3>Your rights</h3><p>You can request information about your stored data at any time, as well as its correction or deletion, by writing to mobin.tutors@gmail.com. We delete your data as soon as it is no longer needed.</p>"
+            privacy_content: "<p><strong>Controller:</strong> Mobin Ekthiari, Peter-Debye-Weg, 8045 Zürich, Switzerland, mobin.tutors@gmail.com</p>"
+                + "<p>We only process your data (e.g. name, email address and message) to answer your request and organise lessons. For this we use external service providers for form delivery, communication, video lessons and web hosting, which may also process data abroad, in particular in the USA. When you visit the site, technically necessary data such as your IP address is processed.</p>"
+                + "<p>This site sets no cookies of its own and uses no analytics tools. You can request information about, correction of or deletion of your data at any time: mobin.tutors@gmail.com</p>"
                 + "<p><em>Last updated: October 2026</em></p>",
             footer_text: "&copy; 2026 Mobintutors. All rights reserved.",
             chatbot_title: "Questions for the Tutoring Bot",
