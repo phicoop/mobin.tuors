@@ -6,58 +6,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const SETTINGS = {
         // true = Mobin ist gerade nicht erreichbar. Buchungs- und Kontaktantworten
         // bekommen dann automatisch den Hinweis unten angehängt.
-        paused: true,
-        pausedNote: {
-            de: "Hinweis: Mobin ist wegen der aktuellen Lage in seinem Land vorübergehend nicht erreichbar. Neue Anfragen nimmt Rahel über das Kontaktformular auf dieser Seite entgegen.",
-            en: "Note: Due to the current situation in his country, Mobin is temporarily unreachable. Rahel is handling new requests through the contact form on this page."
-        },
-        replyDelay: 450 // Millisekunden, bis der Bot antwortet
-    };
-
-    // =====================================================================
-    //  ÜBERSETZUNGEN DER SEITE
-    // =====================================================================
-    const translations = {
-        de: {
-            title: "Mobintutors - Dein Nachhilfelehrer",
-            logo: "Mobin.tutors!",
-            nav_about: "Über mich",
-            nav_contact: "Kontakt & Buchen",
-            nav_imprint: "Impressum",
-            hero_title: "Lernen leicht gemacht.",
-            hero_subtitle: "Professionelle Nachhilfe, die dich wirklich weiterbringt.",
-            cta_home: "Jetzt buchen!",
-            about_title: "Über mich",
-            about_name: "Hallo, ich bin Mobin",
-            about_text1: "Ich bin ein leidenschaftlicher Nachhilfelehrer mit zwei Jahren Erfahrung in der Vermittlung verschiedener Mathematikfächer. Mein Ziel ist es, nicht nur Wissen zu vermitteln, sondern auch das Selbstvertrauen meiner Schülerinnen und Schüler zu stärken. Ich glaube daran, dass jeder lernen kann, wenn er die richtige Unterstützung erhält.",
-            about_text2: "In meinen Stunden gehe ich auf deine individuellen Bedürfnisse ein und erstelle massgeschneiderte Lernpläne. Gemeinsam überwinden wir Schwierigkeiten und machen das Lernen zu einem positiven Erlebnis. Ob Algebra, Analysis, diskrete Mathematik oder ein anderes Mathematikfach – ich helfe dir, deine Ziele zu erreichen.",
-            about_text3: "Der Unterricht findet auf Englisch über Zoom statt und kann von Montag bis Sonntag zwischen 08:30 und 22:00 Uhr gebucht werden. Die Probelektion kostet 15 CHF, danach 25 CHF pro Stunde. Der Unterricht richtet sich an Schüler und Studierende auf Gymnasial-, Hochschul- und ETH-Niveau.",
-            contact_title: "Kontakt & Buchen",
-            contact_subtitle: "Bereit für den nächsten Schritt? Nimm Kontakt auf oder buche direkt eine Probestunde.",
-            contact_info_title: "Kontaktinformationen",
-            contact_info_link: "WhatsApp-Nachricht senden",
-            cta_contact: "Probestunde anfragen",
-            contact_form_title: "Direkt eine Nachricht senden",
-            form_name_placeholder: "Dein Name",
-            form_email_placeholder: "Deine E-Mail-Adresse",
-            form_message_placeholder: "Deine Nachricht",
-            form_send_button: "Senden",
-            imprint_title: "Impressum",
-            imprint_content1: "Rahel Zinga<br>Peter-Debye-Weg<br>8045 Zürich",
-document.addEventListener('DOMContentLoaded', () => {
-
-    // =====================================================================
-    //  EINSTELLUNGEN – hier kannst du den Bot ohne Programmierkenntnisse anpassen
-    // =====================================================================
-    const SETTINGS = {
-        // true = Mobin ist gerade nicht erreichbar. Buchungs- und Kontaktantworten
-        // bekommen dann automatisch den Hinweis unten angehängt.
-        paused: true,
+        paused: false,
         pausedNote: {
             de: "Hinweis: Mobin ist wegen der aktuellen Lage in seinem Land vorübergehend nicht erreichbar. Du kannst deine Anfrage trotzdem über das Kontaktformular auf dieser Seite senden, sie wird weitergeleitet.",
             en: "Note: Due to the current situation in his country, Mobin is temporarily unreachable. You can still send your request through the contact form on this page and it will be passed on."
         },
-        replyDelay: 450 // Millisekunden, bis der Bot antwortet
+        replyDelay: 450, // Millisekunden, bis der Bot antwortet
+        blink: true,          // Chatbot-Symbol blinzelt ab und zu
+        blinkEvery: [3, 6]    // zufällig alle 3 bis 6 Sekunden
     };
 
     // =====================================================================
@@ -89,8 +45,8 @@ document.addEventListener('DOMContentLoaded', () => {
             form_message_placeholder: "Deine Nachricht",
             form_send_button: "Senden",
             imprint_title: "Impressum",
-            imprint_content1: "Rahel Zinga<br>Peter-Debye-Weg<br>8045 Zürich",
-            imprint_content2: "Verantwortlich für den Inhalt:",
+            imprint_content1: "Mobin Ekthiari<br>Peter-Debye-Weg<br>8045 Zürich<br><br><strong>Kontakt:</strong><br>Telefon: 0778146402<br>E-Mail: mobin.tutors@gmail.com",
+            imprint_content2: "<strong>Verantwortlich für den Inhalt:</strong><br>Mobin Ekthiari",
             footer_text: "&copy; 2025 Mobintutors. Alle Rechte vorbehalten.",
             chatbot_title: "Fragen an den Nachhilfe-Bot",
             chatbot_intro: "Hast du Fragen zum Unterricht, zu den Kosten oder zu freien Zeiten? Frag mich einfach!",
@@ -123,8 +79,8 @@ document.addEventListener('DOMContentLoaded', () => {
             form_message_placeholder: "Your message",
             form_send_button: "Send",
             imprint_title: "Imprint",
-            imprint_content1: "Rahel Zinga<br>Peter-Debye-Weg<br>8045 Zürich",
-            imprint_content2: "Responsible for the content:",
+            imprint_content1: "Mobin Ekthiari<br>Peter-Debye-Weg<br>8045 Zürich<br><br><strong>Contact:</strong><br>Phone: 0778146402<br>Email: mobin.tutors@gmail.com",
+            imprint_content2: "<strong>Responsible for the content:</strong><br>Mobin Ekthiari",
             footer_text: "&copy; 2025 Mobintutors. All rights reserved.",
             chatbot_title: "Questions for the Tutoring Bot",
             chatbot_intro: "Questions about lessons, prices or availability? Just ask!",
@@ -535,6 +491,47 @@ document.addEventListener('DOMContentLoaded', () => {
         }, SETTINGS.replyDelay);
     };
 
+    // ----- Blinzeln -----
+    // Hat das Symbol Augen mit der Klasse "eye", blinzeln nur diese.
+    // Sonst blinzelt das ganze Symbol mit einem kurzen Zusammenziehen.
+    const blinkStyle = document.createElement('style');
+    blinkStyle.textContent = `
+        @keyframes mt-blink-eye  { 0%, 100% { transform: scaleY(1); } 50% { transform: scaleY(0.1); } }
+        @keyframes mt-blink-icon { 0%, 100% { transform: scaleY(1); } 50% { transform: scaleY(0.82); } }
+        #chatbot-icon .eye { transform-box: fill-box; transform-origin: center; }
+        #chatbot-icon.mt-blink .eye { animation: mt-blink-eye 0.16s ease-in-out; }
+        #chatbot-icon.mt-blink.mt-no-eyes { animation: mt-blink-icon 0.16s ease-in-out; }
+        @media (prefers-reduced-motion: reduce) {
+            #chatbot-icon.mt-blink .eye, #chatbot-icon.mt-blink.mt-no-eyes { animation: none; }
+        }
+    `;
+    document.head.appendChild(blinkStyle);
+
+    const blinkOnce = () => new Promise(resolve => {
+        chatbotIcon.classList.toggle('mt-no-eyes', !chatbotIcon.querySelector('.eye'));
+        chatbotIcon.classList.remove('mt-blink');
+        void chatbotIcon.offsetWidth; // Animation neu starten
+        chatbotIcon.classList.add('mt-blink');
+        setTimeout(() => { chatbotIcon.classList.remove('mt-blink'); resolve(); }, 180);
+    });
+
+    const scheduleBlink = () => {
+        const [min, max] = SETTINGS.blinkEvery;
+        const wait = (min + Math.random() * (max - min)) * 1000;
+        setTimeout(async () => {
+            // Nicht blinzeln, solange das Chatfenster offen ist
+            if (!chatbotWindow.classList.contains('visible')) {
+                await blinkOnce();
+                if (Math.random() < 0.25) { // manchmal doppelt blinzeln
+                    await new Promise(r => setTimeout(r, 120));
+                    await blinkOnce();
+                }
+            }
+            scheduleBlink();
+        }, wait);
+    };
+    if (SETTINGS.blink) scheduleBlink();
+
     let opened = false;
     chatbotIcon.addEventListener('click', () => {
         chatbotWindow.classList.toggle('visible');
@@ -543,6 +540,9 @@ document.addEventListener('DOMContentLoaded', () => {
             renderQuickReplies();
             setTimeout(() => userInput.focus(), 100);
         }
+    });
+    chatbotIcon.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); chatbotIcon.click(); }
     });
     if (closeBtn) closeBtn.addEventListener('click', () => chatbotWindow.classList.remove('visible'));
 
