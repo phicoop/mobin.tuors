@@ -1,30 +1,84 @@
-/* Grundlegende Stile */
+/* =====================================================================
+   Mobintutors – Stylesheet
+   Funktioniert auf Smartphones (iOS/Android), Tablets und Computern.
+   Farben und Bilder kannst du zentral hier oben ändern.
+   ===================================================================== */
+:root {
+    --blue: #3498db;
+    --blue-dark: #2980b9;
+    --navy: #2c3e50;
+    --text: #333;
+    --text-soft: #555;
+    --yellow: #fff703;
+    --radius: 10px;
+    --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    --header-h: 64px;
+    --safe-bottom: env(safe-area-inset-bottom, 0px);
+    --safe-right: env(safe-area-inset-right, 0px);
+}
+
+/* ---------- Grundlagen ---------- */
+*, *::before, *::after {
+    box-sizing: border-box; /* Padding sprengt keine Breiten mehr */
+}
+
+html {
+    -webkit-text-size-adjust: 100%; /* iPhone vergrössert Text im Querformat nicht */
+    text-size-adjust: 100%;
+    scroll-behavior: smooth;
+    scroll-padding-top: calc(var(--header-h) + 12px); /* Anker landen nicht unter dem Header */
+}
+
 body {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
     margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    color: #333;
-    /* Hintergrundbild für die gesamte Seite */
-    background-image: url('hintergrundbild.png'); /* Hier wurde der Dateiname eingefügt */
+    color: var(--text);
+    line-height: 1.6;
+    overflow-x: hidden;
+    background-color: #eef2f7; /* falls das Bild nicht lädt */
+}
+
+/* Hintergrundbild fest hinter der Seite.
+   (background-attachment: fixed funktioniert auf iPhones nicht, darum so.) */
+body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background-image: url('hintergrundbild.png');
     background-size: cover;
     background-position: center;
-    background-attachment: fixed;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+h1, h2, h3 {
+    color: var(--navy);
+    line-height: 1.2;
+    overflow-wrap: break-word;
 }
 
 .container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 20px;
+    padding: 20px clamp(16px, 4vw, 20px);
 }
 
-h1, h2, h3 {
-    color: #2c3e50;
+a:focus-visible, button:focus-visible, select:focus-visible,
+input:focus-visible, textarea:focus-visible, [role="button"]:focus-visible {
+    outline: 3px solid var(--blue);
+    outline-offset: 2px;
 }
 
-/* Header und Navigation */
+/* ---------- Header und Navigation ---------- */
 header {
+    background-color: var(--navy); /* falls das Banner nicht lädt */
     background-image: url('banner .png');
+    background-size: cover;
+    background-position: center;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     position: sticky;
     top: 0;
@@ -33,98 +87,142 @@ header {
 
 nav {
     display: flex;
-    justify-content: space-between;
+    flex-wrap: wrap;
     align-items: center;
+    gap: 6px 20px;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 10px 20px;
+    padding: 10px clamp(16px, 4vw, 20px);
+    min-height: var(--header-h);
 }
 
 .logo {
     font-weight: 700;
-    font-size: 1.5rem;
-    color: #fff703;
+    font-size: clamp(1.2rem, 1rem + 1vw, 1.5rem);
+    color: var(--yellow);
     text-decoration: none;
     transition: color 0.3s ease;
+    margin-right: auto;
 }
 
-.logo:hover {
-    color: #2980b9;
+.nav-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 20px;
 }
 
 .nav-links a {
     text-decoration: none;
-    color: #555;
-    margin-left: 20px;
+    color: var(--text-soft);
     font-weight: 600;
+    padding: 4px 0;
     transition: color 0.3s ease;
 }
 
-.nav-links a:hover {
-    color: #3498db;
+/* Sprachumschalter */
+.language-switcher-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    border-radius: 5px;
+    padding: 5px;
+    transition: background-color 0.3s ease;
 }
 
-/* Hero Section (Home) */
+#language-switcher {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: transparent;
+    border: none;
+    font-family: inherit;
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--text-soft);
+    cursor: pointer;
+    padding: 4px 18px 4px 4px;
+    /* Grössere Klickfläche, Globus liegt rechts */
+}
+
+.language-switcher-container .fa-globe {
+    color: var(--text-soft);
+    font-size: 1rem;
+    position: absolute;
+    right: 5px;
+    pointer-events: none;
+    transition: color 0.3s ease;
+}
+
+/* ---------- Hero ---------- */
 .hero {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
+    gap: 30px;
     min-height: 80vh;
-    padding: 50px;
+    min-height: 80svh; /* berücksichtigt Browserleisten auf Handys */
+    padding: clamp(24px, 6vw, 50px) clamp(16px, 4vw, 50px);
     text-align: center;
-    flex-wrap: wrap;
-    background: transparent; /* Wichtig, um das Hintergrundbild von body zu zeigen */
 }
 
 .hero-content {
-    flex: 1;
-    min-width: 300px;
+    flex: 1 1 340px;
+    max-width: 640px;
     animation: fadeInDown 1s ease-in-out;
-    background-color: rgba(255, 255, 255, 0.85); /* Halbdurchsichtiger Hintergrund, damit Text lesbar ist */
-    padding: 40px;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    background-color: rgba(255, 255, 255, 0.85);
+    padding: clamp(24px, 5vw, 40px);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
 }
 
 .hero-content h1 {
-    font-size: 3.5rem;
-    margin-bottom: 10px;
-    color: #2c3e50;
+    font-size: clamp(2rem, 1.2rem + 4vw, 3.5rem);
+    margin: 0 0 10px;
 }
 
 .hero-content p {
-    font-size: 1.2rem;
-    color: #555;
+    font-size: clamp(1rem, 0.9rem + 0.5vw, 1.2rem);
+    color: var(--text-soft);
+    margin: 0;
 }
 
 .hero-image {
-    flex: 1;
-    min-width: 300px;
+    flex: 1 1 300px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.hero-image img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 10px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-    transition: transform 0.5s ease-in-out;
+/* Schriftzug "Online Tutoring" im Hero */
+.handwriting-effect {
+    margin: 0;
+    font-family: 'Caveat', 'Segoe Script', 'Bradley Hand', cursive;
+    font-weight: 600;
+    font-size: clamp(2.6rem, 1.5rem + 5vw, 5rem);
+    color: var(--yellow);
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+    white-space: nowrap;
 }
 
-.hero-image img:hover {
-    transform: translateY(-10px) scale(1.02);
+.handwriting-effect::before {
+    content: attr(data-text);
+    display: inline-block;
+    animation: writeIn 2.2s steps(30, end) 0.4s both;
 }
 
-/* Call-to-Action Button */
+/* ---------- Buttons ---------- */
 .cta-button {
     display: inline-block;
-    background-color: #3498db;
+    background-color: var(--blue);
     color: #fff;
     padding: 12px 25px;
+    min-height: 44px; /* gut antippbar */
     border-radius: 5px;
     text-decoration: none;
+    font-family: inherit;
+    font-size: 1rem;
     font-weight: 600;
     margin-top: 20px;
     transition: background-color 0.3s ease, transform 0.2s ease;
@@ -132,24 +230,46 @@ nav {
     cursor: pointer;
 }
 
-.cta-button:hover {
-    background-color: #2980b9;
-    transform: translateY(-2px);
+.cta-button, nav a {
+    position: relative;
+    overflow: hidden;
 }
 
-/* Allgemeiner Abschnittsstil */
+.ripple {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    margin: -10px 0 0 -10px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.4);
+    transform: scale(0);
+    animation: ripple 0.6s linear;
+    pointer-events: none;
+}
+
+/* ---------- Abschnitte ---------- */
 .page-section {
-    padding: 80px 0;
+    padding: clamp(48px, 8vw, 80px) 0;
     text-align: center;
-    background-color: rgba(255, 255, 255, 0.9); /* Halbdurchsichtiger weißer Hintergrund für Lesbarkeit */
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+/* Einblenden nur, wenn script.js läuft – sonst bleibt alles sichtbar */
+.js-ready .page-section {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.js-ready .page-section.visible {
+    opacity: 1;
+    transform: none;
 }
 
 .page-section h2 {
-    font-size: 2.5rem;
-    margin-bottom: 20px;
-    position: relative;
+    font-size: clamp(1.8rem, 1.3rem + 2vw, 2.5rem);
+    margin: 0 0 20px;
     display: inline-block;
-    animation: fadeIn 1.5s ease;
 }
 
 .page-section h2::after {
@@ -157,65 +277,61 @@ nav {
     display: block;
     width: 60px;
     height: 4px;
-    background-color: #3498db;
+    background-color: var(--blue);
     margin: 10px auto 0;
 }
 
-/* About-Seite */
+/* Über mich */
 .about-content {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    text-align: left;
     gap: 40px;
-    margin-top: 40px;
+    margin-top: 30px;
+    text-align: left;
 }
 
 .about-text {
-    flex: 2;
-    min-width: 300px;
+    flex: 2 1 320px;
+    min-width: 0;
 }
 
 .about-image {
-    flex: 1;
-    min-width: 250px;
+    flex: 1 1 220px;
     display: flex;
     justify-content: center;
 }
 
 .about-image img {
-    max-width: 100%;
-    height: auto;
+    width: 100%;
+    max-width: 320px;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
     border-radius: 50%;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--shadow);
     transition: transform 0.5s ease;
 }
 
-.about-image img:hover {
-    transform: rotate(5deg) scale(1.05);
-}
-
-/* Kontakt-Seite */
+/* Kontakt */
 .contact-section {
     background-color: rgba(232, 234, 246, 0.9);
 }
 
 .contact-grid {
     display: flex;
-    justify-content: space-around;
-    gap: 40px;
     flex-wrap: wrap;
-    margin-top: 40px;
+    gap: clamp(20px, 4vw, 40px);
+    margin-top: 30px;
     text-align: left;
 }
 
 .contact-info, .contact-form-container {
+    flex: 1 1 320px;
+    min-width: 0;
     background-color: #fff;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    flex: 1;
-    min-width: 300px;
+    padding: clamp(20px, 4vw, 30px);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
 }
 
 .contact-info h3, .contact-form-container h3 {
@@ -226,151 +342,21 @@ nav {
     display: flex;
     align-items: center;
     gap: 10px;
-    margin-bottom: 15px;
+    margin: 0 0 15px;
+    overflow-wrap: anywhere; /* lange E-Mail-Adressen brechen um */
+}
+
+.contact-info .icon {
+    width: 1.2em;
+    flex-shrink: 0;
+    text-align: center;
+    color: var(--blue);
 }
 
 .contact-info a {
-    color: #333;
+    color: var(--text);
     text-decoration: none;
     transition: color 0.3s ease;
-}
-
-.contact-info a:hover {
-    color: #3498db;
-}
-
-.contact-form input, .contact-form textarea {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-family: 'Poppins', sans-serif;
-}
-
-.contact-form button {
-    width: 100%;
-}
-
-/* Impressum */
-.imprint-section {
-    background-color: rgba(255, 255, 255, 0.0);
-    text-align: left;
-}
-
-.imprint-content p {
-    line-height: 1.6;
-}
-
-/* Footer */
-footer {
-    background-color: #2c3e50;
-    color: #fff;
-    text-align: center;
-    padding: 20px 0;
-}
-
-/* Animationen (Keyframes) */
-@keyframes fadeInDown {
-    from {
-        opacity: 0;
-        transform: translateY(-20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
-
-/* Mobile Anpassungen */
-/* --- Mobile Anpassungen (Final) --- */
-@media (max-width: 768px) {
-    /* Navigationslinks verstecken */
-    .nav-links {
-        display: none;
-    }
-
-    /* Header Container anpassen */
-    header {
-        position: relative;
-        z-index: 1000;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding: 10px 0;
-    }
-
-    /* Logo anpassen */
-    header .logo {
-        margin-bottom: 15px;
-    }
-
-    /* Sprachumschalter sichtbar und zentriert machen */
-    .language-switcher-container {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        position: static;
-        margin: 0 auto;
-        width: 100%;
-    }
-
-    /* Hero Section (Home) anpassen */
-    .hero {
-        flex-direction: column-reverse;
-        text-align: center;
-    }
-
-    .hero-content h1 {
-        font-size: 2.5rem;
-    }
-    
-    /* Wichtige Anpassung: Stelle sicher, dass der Chatbot-Container sichtbar bleibt */
-    #chatbot-container {
-        display: block;
-    }
-}
-
-/* JavaScript-basierte Animationen */
-.page-section {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-}
-
-.page-section.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.cta-button, nav a {
-    position: relative;
-    overflow: hidden;
-    transform: translateZ(0); /* Für Hardware-Beschleunigung */
-}
-
-.ripple {
-    position: absolute;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.4);
-    transform: scale(0);
-    animation: ripple 0.6s linear;
-}
-
-@keyframes ripple {
-    to {
-        transform: scale(4);
-        opacity: 0;
-    }
 }
 
 .clickable-phone-number {
@@ -379,22 +365,66 @@ footer {
     transition: color 0.3s ease;
 }
 
-.clickable-phone-number:hover {
-    color: #3498db;
+.contact-form input, .contact-form textarea {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-family: inherit;
+    font-size: 16px; /* verhindert automatisches Hineinzoomen auf iPhones */
+    background-color: #fff;
+    color: var(--text);
+    -webkit-appearance: none;
+    appearance: none;
 }
 
-/* --- Chatbot Stile --- */
+.contact-form textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.contact-form button {
+    width: 100%;
+    margin-top: 5px;
+}
+
+/* Impressum */
+.imprint-section {
+    background-color: transparent;
+    text-align: left;
+}
+
+.imprint-section .container {
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: var(--radius);
+}
+
+/* Footer */
+footer {
+    background-color: var(--navy);
+    color: #fff;
+    text-align: center;
+    padding: 20px 16px calc(20px + var(--safe-bottom));
+}
+
+footer p {
+    margin: 0;
+}
+
+/* ---------- Chatbot ---------- */
 #chatbot-container {
     position: fixed;
-    bottom: 20px;
-    right: 20px;
-    z-index: 1000;
+    bottom: calc(20px + var(--safe-bottom));
+    right: calc(20px + var(--safe-right));
+    z-index: 1100;
 }
 
 #chatbot-icon {
-    width: 80px;
-    height: 80px;
-    background-color: #3498db;
+    width: 72px;
+    height: 72px;
+    background-color: var(--blue);
     color: #fff;
     border-radius: 50%;
     display: flex;
@@ -404,59 +434,80 @@ footer {
     cursor: pointer;
     font-size: 2.5rem;
     transition: transform 0.3s ease;
+    -webkit-tap-highlight-color: transparent;
 }
 
-#chatbot-icon:hover {
-    transform: scale(1.1);
+#chatbot-icon .bot-face {
+    width: 1.1em;
+    height: 1.1em;
+    display: block;
 }
 
 #chatbot-window {
-    width: 350px;
-    height: 450px;
+    width: min(350px, calc(100vw - 40px));
+    height: min(450px, calc(100vh - 150px));
+    height: min(450px, calc(100dvh - 150px)); /* passt sich der Handy-Tastatur an */
     background-color: #fff;
-    border-radius: 10px;
+    border-radius: var(--radius);
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     display: none;
     flex-direction: column;
     overflow: hidden;
     position: absolute;
-    bottom: 80px;
+    bottom: 86px;
     right: 0;
+    transform-origin: bottom right;
 }
 
 #chatbot-window.visible {
     display: flex;
-    animation: fadeInScale 0.3s ease-in-out;
+    animation: fadeInScale 0.25s ease-out;
 }
 
 #chatbot-header {
-    background-color: #3498db;
+    background-color: var(--blue);
     color: #fff;
-    padding: 15px;
+    padding: 12px 15px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 1.1rem;
+    gap: 10px;
+    flex-shrink: 0;
+}
+
+#chatbot-header h3 {
+    margin: 0;
+    color: #fff;
+    font-size: 1.05rem;
 }
 
 #close-btn {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
+    line-height: 1;
     cursor: pointer;
+    padding: 4px 8px;
+    margin: -4px -8px -4px 0;
 }
 
 #chatbot-messages {
-    flex-grow: 1;
+    flex: 1 1 auto;
+    min-height: 0;
     padding: 15px;
     overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain; /* Seite scrollt nicht mit */
     display: flex;
     flex-direction: column;
     gap: 10px;
 }
 
 .message {
-    padding: 10px;
-    border-radius: 10px;
-    max-width: 80%;
+    padding: 10px 12px;
+    border-radius: var(--radius);
+    max-width: 85%;
+    overflow-wrap: anywhere;
+    font-size: 0.95rem;
+    line-height: 1.45;
 }
 
 .user-message {
@@ -472,136 +523,150 @@ footer {
 #chatbot-input {
     display: flex;
     border-top: 1px solid #ccc;
+    flex-shrink: 0;
 }
 
 #user-input {
-    flex-grow: 1;
+    flex: 1 1 auto;
+    min-width: 0;
     border: none;
-    padding: 10px;
-    font-family: 'Poppins', sans-serif;
+    padding: 12px;
+    font-family: inherit;
+    font-size: 16px; /* kein Auto-Zoom auf iPhones */
     outline: none;
+    border-radius: 0;
+    -webkit-appearance: none;
+    appearance: none;
 }
 
 #send-btn {
-    background-color: #3498db;
+    background-color: var(--blue);
     color: #fff;
     border: none;
-    padding: 10px 15px;
+    padding: 0 18px;
+    min-width: 48px;
     cursor: pointer;
     font-size: 1rem;
+}
+
+/* ---------- Hover-Effekte nur auf Geräten mit Maus ---------- */
+@media (hover: hover) and (pointer: fine) {
+    .logo:hover { color: var(--blue-dark); }
+    .nav-links a:hover { color: var(--blue); }
+    .language-switcher-container:hover { background-color: rgba(255, 255, 255, 0.5); }
+    .language-switcher-container:hover .fa-globe,
+    #language-switcher:hover { color: var(--blue); }
+    .cta-button:hover { background-color: var(--blue-dark); transform: translateY(-2px); }
+    .about-image img:hover { transform: rotate(5deg) scale(1.05); }
+    .contact-info a:hover, .clickable-phone-number:hover { color: var(--blue); }
+    #chatbot-icon:hover { transform: scale(1.1); }
+}
+
+/* ---------- Tablets und Handys ---------- */
+@media (max-width: 768px) {
+    :root { --header-h: 96px; }
+
+    /* Navigation: Logo und Sprache oben, Links darunter in einer Zeile */
+    .nav-links {
+        order: 3;
+        width: 100%;
+        justify-content: center;
+        gap: 4px 18px;
+        font-size: 0.95rem;
+    }
+
+    .hero {
+        flex-direction: column-reverse;
+        min-height: auto;
+    }
+
+    .hero-content,
+    .hero-image {
+        flex-basis: auto;
+        width: 100%;
+    }
+
+    .about-content {
+        flex-direction: column-reverse; /* Bild über dem Text */
+        text-align: left;
+        gap: 24px;
+    }
+
+    .about-text, .about-image {
+        flex-basis: auto;
+        width: 100%;
+    }
+
+    .about-image img {
+        max-width: 220px;
+    }
+}
+
+/* ---------- Kleine Handys ---------- */
+@media (max-width: 420px) {
+    .nav-links {
+        justify-content: space-between;
+        gap: 4px 10px;
+        font-size: 0.9rem;
+    }
+
+    .hero-content {
+        padding: 22px 18px;
+    }
+
+    #chatbot-container {
+        bottom: calc(14px + var(--safe-bottom));
+        right: calc(14px + var(--safe-right));
+    }
+
+    #chatbot-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 2.1rem;
+    }
+
+    #chatbot-window {
+        width: calc(100vw - 28px);
+        bottom: 72px;
+    }
+}
+
+/* ---------- Querformat auf Handys (wenig Höhe) ---------- */
+@media (max-height: 500px) and (orientation: landscape) {
+    header { position: relative; } /* Header nimmt keinen Platz weg */
+    html { scroll-padding-top: 12px; }
+    .hero { min-height: auto; }
+    #chatbot-window { height: calc(100dvh - 110px); }
+}
+
+/* ---------- Weniger Bewegung, falls im System eingestellt ---------- */
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+    .js-ready .page-section { transform: none; }
+}
+
+/* ---------- Animationen ---------- */
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to   { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes fadeInScale {
-    from {
-        opacity: 0;
-        transform: scale(0.9);
-    }
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
+    from { opacity: 0; transform: scale(0.92); }
+    to   { opacity: 1; transform: scale(1); }
 }
 
-/* Eleganter, diskreter Sprachumschalter */
-.language-switcher-container {
-    position: relative;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    margin-left: 20px;
-    background-color: transparent;
-    border-radius: 5px;
-    padding: 5px;
-    transition: background-color 0.3s ease;
+@keyframes ripple {
+    to { transform: scale(4); opacity: 0; }
 }
 
-.language-switcher-container:hover {
-    background-color: rgba(255, 255, 255, 0.5); /* Leichter Hover-Effekt */
+/* Schriftzug erscheint wie von Hand geschrieben, von links nach rechts */
+@keyframes writeIn {
+    from { clip-path: inset(0 100% 0 0); }
+    to   { clip-path: inset(0 0 0 0); }
 }
-
-#language-switcher {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    background-color: transparent;
-    border: none;
-    font-family: 'Poppins', sans-serif;
-    font-weight: 600;
-    font-size: 0.9rem;
-    color: #555;
-    cursor: pointer;
-    outline: none;
-}
-
-#language-switcher:hover {
-    color: #3498db;
-}
-
-.language-switcher-container .fa-globe {
-    color: #555;
-    font-size: 1rem;
-    transition: color 0.3s ease;
-}
-
-.language-switcher-container:hover .fa-globe {
-    color: #3498db;
-}
-/* Styling für die Handschrift-Animation */
-.writing-animation-container {
-    width: 100%;
-    max-width: 600px; /* Breite der Animation anpassen */
-    margin: auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.writing-animation-container img {
-    width: 100%;
-    height: auto;
-    display: block;
-}
-
-/* Definitive Mobile Anpassungen für den Header */
-@media (max-width: 600px) {
-    /* Header Container anpassen */
-    nav {
-        display: flex;
-        justify-content: space-between; /* Schiebt das Logo und die Sprachauswahl an die Ränder */
-        align-items: center;
-    }
-
-    /* Navigationslinks verstecken */
-    .nav-links {
-        display: none;
-    }
-
-    /* Sprachumschalter sichtbar machen und nach rechts schieben */
-    .language-switcher-container {
-        display: flex;
-        align-items: center;
-        margin-left: auto; /* Schiebt es ganz nach rechts */
-    }
-
-    /* Verhindert, dass das Logo in der Größe wächst und schiebt den Sprachumschalter nach rechts */
-    .logo {
-        flex-shrink: 0;
-    }
-
-    /* Die anderen mobilen Anpassungen */
-    .hero {
-        flex-direction: column-reverse;
-        text-align: center;
-    }
-    
-    .hero-content h1 {
-        font-size: 2.5rem;
-    }
-    
-    #chatbot-container {
-        display: block;  
-    }
-}
-
-
-
