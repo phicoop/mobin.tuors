@@ -3,11 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-    <title data-key="title">Mobintutors - Dein Nachhilfelehrer</title>
-    <meta name="description" content="Online-Mathenachhilfe über Zoom für alle Stufen – von der Kanti bis zur ETH. Probelektion für 15 CHF.">
+    <title data-key="title">Mathe-Nachhilfe online – Kanti bis ETH | Mobintutors</title>
+    <meta name="description" content="Online-Mathenachhilfe über Zoom für alle Stufen – von der Kanti bis zur ETH. Unterricht auf Englisch, Probelektion für 15 CHF.">
+    <link rel="canonical" href="https://mobintutors.ch/">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://mobintutors.ch/">
+    <meta property="og:title" content="Mathe-Nachhilfe online – Kanti bis ETH | Mobintutors">
+    <meta property="og:description" content="Online-Mathenachhilfe über Zoom für alle Stufen. Unterricht auf Englisch, Probelektion für 15 CHF.">
+    <meta property="og:image" content="https://mobintutors.ch/mobinpicture.png">
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Caveat:wght@600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "EducationalOrganization",
+        "name": "Mobintutors",
+        "url": "https://mobintutors.ch/",
+        "email": "mobin.tutors@gmail.com",
+        "description": "Online-Mathenachhilfe über Zoom für alle Stufen, von der Kanti bis zur ETH. Unterricht auf Englisch.",
+        "address": { "@type": "PostalAddress", "streetAddress": "Peter-Debye-Weg", "postalCode": "8045", "addressLocality": "Zürich", "addressCountry": "CH" },
+        "makesOffer": [
+            { "@type": "Offer", "name": "Probelektion", "price": "15", "priceCurrency": "CHF" },
+            { "@type": "Offer", "name": "Lektion (80 Minuten)", "price": "35", "priceCurrency": "CHF" }
+        ]
+    }
+    </script>
 </head>
 <body>
 
@@ -16,8 +37,9 @@
             <a href="#" class="logo" data-key="logo">Mobin.tutors!</a>
             <div class="nav-links">
                 <a href="#about" data-key="nav_about">Über mich</a>
+                <a href="#prices" data-key="nav_prices">Preise</a>
+                <a href="#faq" data-key="nav_faq">FAQ</a>
                 <a href="#contact" data-key="nav_contact">Kontakt & Buchen</a>
-                <a href="#imprint" data-key="nav_imprint">Impressum</a>
             </div>
             <div class="language-switcher-container">
                 <select id="language-switcher" aria-label="Sprache wählen">
@@ -32,12 +54,17 @@
     <main>
         <section id="home" class="hero">
             <div class="hero-content">
-                <h1 data-key="hero_title">Lernen leicht gemacht.</h1>
+                <h1 data-key="hero_title">Mathe-Nachhilfe online – von der Kanti bis zur ETH</h1>
                 <p data-key="hero_subtitle">Professionelle Nachhilfe, die dich wirklich weiterbringt.</p>
-                <a href="#contact" class="cta-button" data-key="cta_home">Jetzt buchen!</a>
+                <ul class="hero-facts">
+                    <li><i class="fas fa-language" aria-hidden="true"></i> <span data-key="hero_fact1">Auf Englisch</span></li>
+                    <li><i class="fas fa-video" aria-hidden="true"></i> <span data-key="hero_fact2">Online via Zoom</span></li>
+                    <li><i class="fas fa-tag" aria-hidden="true"></i> <span data-key="hero_fact3">Probelektion 15 CHF</span></li>
+                </ul>
+                <a href="#contact" class="cta-button js-book" data-key="cta_home">Jetzt buchen!</a>
             </div>
             <div class="hero-image">
-                <h1 class="handwriting-effect" data-text="Online Tutoring"></h1>
+                <h1 class="handwriting-effect" data-text="Online Tutoring" aria-hidden="true"></h1>
             </div>
         </section>
 
@@ -47,13 +74,59 @@
                 <div class="about-content">
                     <div class="about-text">
                         <h3 data-key="about_name">Hallo, ich bin Mobin</h3>
-                        <p data-key="about_text1">Ich bin ein leidenschaftlicher Nachhilfelehrer mit drei Jahren Erfahrung in der Vermittlung verschiedener Mathematikfächer. Bisher haben alle meine Schülerinnen und Schüler ihre Matheprüfungen erfolgreich bestanden.</p>
-                        <p data-key="about_text2">In meinen Stunden gehe ich auf deine individuellen Bedürfnisse ein und erstelle massgeschneiderte Lernpläne.</p>
-                        <p data-key="about_text3">Der Unterricht findet auf Englisch über Zoom statt und kann von Montag bis Sonntag zwischen 08:30 und 22:00 Uhr gebucht werden.</p>
+                        <p data-key="about_text1">Ich bin ein leidenschaftlicher Nachhilfelehrer mit drei Jahren Erfahrung in der Vermittlung verschiedener Mathematikfächer. Bisher haben alle meine Schülerinnen und Schüler ihre Matheprüfungen erfolgreich bestanden. Mein Ziel ist es, nicht nur Wissen zu vermitteln, sondern auch das Selbstvertrauen meiner Schülerinnen und Schüler zu stärken. Ich glaube daran, dass jeder lernen kann, wenn er die richtige Unterstützung erhält.</p>
+                        <p data-key="about_text2">In meinen Stunden gehe ich auf deine individuellen Bedürfnisse ein und erstelle massgeschneiderte Lernpläne. Gemeinsam überwinden wir Schwierigkeiten und machen das Lernen zu einem positiven Erlebnis. Ob Algebra, Analysis, diskrete Mathematik oder ein anderes Mathematikfach – ich helfe dir, deine Ziele zu erreichen.</p>
+                        <p data-key="about_text3">Der Unterricht findet auf Englisch über Zoom statt und kann von Montag bis Sonntag zwischen 08:30 und 22:00 Uhr gebucht werden. Die Probelektion kostet pauschal 15 CHF, unabhängig von der Dauer, eine reguläre Lektion von 1 Stunde 20 Minuten kostet 35 CHF. Unterrichtet werden alle Stufen, solange Englisch als Unterrichtssprache für dich kein Problem ist.</p>
                     </div>
                     <div class="about-image">
-                        <img src="mobinpicture.png" alt="Mobin, Mathematik-Nachhilfelehrer">
+                        <img src="mobinpicture.png" alt="Mobin, Mathematik-Nachhilfelehrer" width="320" height="320">
                     </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="prices" class="page-section prices-section">
+            <div class="container">
+                <h2 data-key="prices_title">Preise</h2>
+                <div class="price-grid">
+                    <article class="price-card">
+                        <h3 data-key="price_trial_name">Probelektion</h3>
+                        <p class="price-amount" data-key="price_trial_amount">15 CHF</p>
+                        <p data-key="price_trial_desc">Ohne feste Dauer – so lange, wie du brauchst. Ihr lernt euch kennen und schaut deinen Stoff gemeinsam an.</p>
+                        <a href="#contact" class="cta-button js-book" data-key="price_trial_cta">Probelektion anfragen</a>
+                    </article>
+                    <article class="price-card price-card--main">
+                        <h3 data-key="price_regular_name">Lektion</h3>
+                        <p class="price-amount" data-key="price_regular_amount">35 CHF</p>
+                        <p data-key="price_regular_desc">80 Minuten (1 Std. 20 Min.) Einzelunterricht über Zoom, abgestimmt auf deinen Stoff und deine Prüfungen.</p>
+                        <a href="#contact" class="cta-button js-book" data-key="price_regular_cta">Lektion buchen</a>
+                    </article>
+                </div>
+                <p class="price-note" data-key="price_note">Gruppenlektionen sind möglich, ohne Begrenzung der Gruppengrösse. Eine Quittung erhältst du auf Wunsch.</p>
+            </div>
+        </section>
+
+        <!-- Erfahrungsberichte: erscheinen automatisch, sobald du in script.js unter SETTINGS.testimonials welche einträgst -->
+        <section id="testimonials" class="page-section testimonials-section" hidden>
+            <div class="container">
+                <h2 data-key="testimonials_title">Das sagen Studierende</h2>
+                <div id="testimonials-list" class="testimonials-list"></div>
+            </div>
+        </section>
+
+        <section id="faq" class="page-section faq-section">
+            <div class="container">
+                <h2 data-key="faq_title">Häufige Fragen</h2>
+                <div class="faq-list">
+                    <details><summary data-key="faq_q1">Für welche Stufen ist der Unterricht?</summary><p data-key="faq_a1">Für alle Stufen – von der Schule über Gymnasium und Kanti bis zu Fachhochschule, Universität und ETH. Einzige Voraussetzung: Der Unterricht findet auf Englisch statt.</p></details>
+                    <details><summary data-key="faq_q2">In welcher Sprache findet der Unterricht statt?</summary><p data-key="faq_a2">Auf Englisch. Deutsche Fachbegriffe aus deinem Skript kann Mobin dir bei Bedarf zuordnen.</p></details>
+                    <details><summary data-key="faq_q3">Wie läuft eine Lektion über Zoom ab?</summary><p data-key="faq_a3">Ihr arbeitet gemeinsam auf dem Whiteboard in Zoom. Ideal ist ein Tablet oder Grafikstift, nötig ist das aber nicht. Zoom ist gratis und läuft auch im Browser. Schick deine Unterlagen am besten vorher, dann kann sich Mobin gezielt vorbereiten.</p></details>
+                    <details><summary data-key="faq_q4">Wann kann ich Lektionen buchen?</summary><p data-key="faq_a4">Von Montag bis Sonntag zwischen 08:30 und 22:00 Uhr, also auch abends und am Wochenende.</p></details>
+                    <details><summary data-key="faq_q5">Bekomme ich auch kurzfristig einen Termin?</summary><p data-key="faq_a5">Das hängt davon ab, wie viele Schülerinnen und Schüler Mobin gerade betreut. Frag am besten so früh wie möglich an, besonders vor Prüfungen.</p></details>
+                    <details><summary data-key="faq_q6">Sind Gruppenlektionen möglich?</summary><p data-key="faq_a6">Ja, und es gibt keine Begrenzung bei der Gruppengrösse. Schreib bei der Anfrage einfach, wie viele ihr seid.</p></details>
+                    <details><summary data-key="faq_q7">Darf ich zwischen den Lektionen Fragen schicken?</summary><p data-key="faq_a7">Ja, du kannst Mobin auch zwischen den Lektionen Fragen schicken.</p></details>
+                    <details><summary data-key="faq_q8">Darf ich Lektionen aufnehmen?</summary><p data-key="faq_a8">Frag Mobin vorher direkt, ob er mit einer Aufnahme einverstanden ist. Unterrichtsmaterialien dürfen in keinem Fall ohne vorherige Absprache weitergegeben werden.</p></details>
+                    <details><summary data-key="faq_q9">Bekomme ich eine Quittung?</summary><p data-key="faq_a9">Ja, eine Quittung kannst du jederzeit verlangen.</p></details>
                 </div>
             </div>
         </section>
@@ -66,17 +139,18 @@
                     <div class="contact-info">
                         <h3 data-key="contact_info_title">Kontaktinformationen</h3>
                         <p><i class="fas fa-phone-alt icon"></i> <span id="phone-number" class="clickable-phone-number">+989353821319</span></p>
-                        <p><i class="fab fa-whatsapp icon"></i> <a href="https://wa.link/70p27b" target="_blank" rel="noopener" data-key="contact_info_link">WhatsApp-Nachricht senden</a></p>
+                        <p><i class="fab fa-whatsapp icon"></i> <a id="whatsapp-link" href="https://wa.link/70p27b" target="_blank" rel="noopener" data-key="contact_info_link">WhatsApp-Nachricht senden</a></p>
                         <p><i class="fas fa-envelope icon"></i> <a href="mailto:mobin.tutors@gmail.com">mobin.tutors@gmail.com</a></p>
                         <p><i class="fas fa-map-marker-alt icon"></i> Zoom</p>
-                        <a href="mailto:mobin.tutors@gmail.com" class="cta-button" data-key="cta_contact">Probestunde anfragen</a>
+                        <a href="mailto:mobin.tutors@gmail.com?subject=Probelektion" class="cta-button js-book" data-key="cta_contact">Probestunde anfragen</a>
                     </div>
                     <div class="contact-form-container">
                         <h3 data-key="contact_form_title">Direkt eine Nachricht senden</h3>
                         <form action="https://formspree.io/f/xblaqjjy" method="post" class="contact-form">
-                            <input type="text" name="name" data-key="form_name_placeholder" placeholder="Dein Name" aria-label="Name" required>
-                            <input type="email" name="email" data-key="form_email_placeholder" placeholder="Deine E-Mail-Adresse" aria-label="E-Mail" required>
+                            <input type="text" name="name" data-key="form_name_placeholder" placeholder="Dein Name" aria-label="Name" autocomplete="name" required>
+                            <input type="email" name="email" data-key="form_email_placeholder" placeholder="Deine E-Mail-Adresse" aria-label="E-Mail" autocomplete="email" required>
                             <textarea name="message" rows="5" data-key="form_message_placeholder" placeholder="Deine Nachricht" aria-label="Nachricht" required></textarea>
+                            <p class="form-privacy" data-key="form_privacy">Mit dem Absenden stimmst du der Verarbeitung deiner Angaben gemäss <a href="#privacy">Datenschutzerklärung</a> zu.</p>
                             <button type="submit" class="cta-button" data-key="form_send_button">Senden</button>
                         </form>
                     </div>
@@ -101,6 +175,13 @@
                         Mobin Ekthiari
                     </p>
                 </div>
+            </div>
+        </section>
+
+        <section id="privacy" class="page-section imprint-section privacy-section">
+            <div class="container">
+                <h2 data-key="privacy_title">Datenschutzerklärung</h2>
+                <div class="imprint-content" data-key="privacy_content"><h3>Verantwortlich</h3><p>Mobin Ekthiari, Peter-Debye-Weg, 8045 Zürich, mobin.tutors@gmail.com</p><h3>Kontaktformular</h3><p>Wenn du das Kontaktformular nutzt, werden Name, E-Mail-Adresse und Nachricht über den Dienst Formspree (Formspree Inc., USA) an uns übermittelt. Wir verwenden diese Angaben nur, um deine Anfrage zu beantworten und den Unterricht zu organisieren.</p><h3>E-Mail, WhatsApp und Zoom</h3><p>Wenn du uns per E-Mail (Google Gmail) oder WhatsApp (Meta) schreibst oder am Unterricht über Zoom (Zoom Video Communications, USA) teilnimmst, werden deine Daten auch von diesen Anbietern verarbeitet. Es gelten zusätzlich deren Datenschutzbestimmungen.</p><h3>Schriften und Symbole</h3><p>Diese Seite lädt Schriften von Google Fonts (Google) und Symbole über cdnjs (Cloudflare). Dabei wird deine IP-Adresse an diese Anbieter übertragen.</p><h3>Hosting</h3><p>Beim Aufruf der Seite speichert der Webhoster technisch notwendige Daten wie IP-Adresse, Zeitpunkt und Browsertyp in Server-Protokollen.</p><h3>Cookies und Tracking</h3><p>Diese Seite setzt keine eigenen Cookies und verwendet keine Analyse- oder Werbe-Tools.</p><h3>Deine Rechte</h3><p>Du kannst jederzeit Auskunft über deine gespeicherten Daten verlangen sowie deren Berichtigung oder Löschung. Schreib dazu an mobin.tutors@gmail.com. Wir löschen deine Daten, sobald sie nicht mehr benötigt werden.</p><p><em>Stand: Oktober 2026</em></p></div>
             </div>
         </section>
 
@@ -136,7 +217,11 @@
     </main>
 
     <footer>
-        <p data-key="footer_text">&copy; 2025 Mobintutors. Alle Rechte vorbehalten.</p>
+        <div class="footer-links">
+            <a href="#imprint" data-key="footer_imprint">Impressum</a>
+            <a href="#privacy" data-key="footer_privacy">Datenschutz</a>
+        </div>
+        <p data-key="footer_text">&copy; 2026 Mobintutors. Alle Rechte vorbehalten.</p>
     </footer>
 
     <script src="script.js"></script>
